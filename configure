@@ -1,0 +1,135 @@
+#!/bin/sh
+
+set -euo pipefail
+IFS=$'\n\t'
+
+case $(uname) in
+  Darwin)
+    OS="macos"
+    ;;
+  Linux)
+    OS="arch"
+    ;;
+  *)
+    echo "Unsupported OS. Exiting..."
+    return 1
+    ;;
+esac
+
+PACKAGES_LIST_URL="https://raw.githubusercontent.com/hahuang65/bootstrap/main/${OS}_packages.txt"
+DOTFILES_REPO="hahuang65/dotfiles"
+TMP_PACKAGES_FILE=false
+NEW_PACKAGES=()
+
+function ensure_homebrew {
+  if ! (hash brew) 2> /dev/null; then
+    echo "brew not installed. Installing brew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  fi
+}
+
+function ensure_paru {
+  if !(hash paru) 2> /dev/null; then
+    echo "paru not installed. Installing paru..."
+    rm -rf "/tmp/paru"
+    git clone "https://aur.archlinux.org/paru.git" "/tmp/paru"
+    pushd "/tmp/paru"
+    makepkg --syncdeps --install
+    popd
+    rm -rf "/tmp/paru"
+  fi
+}
+
+function ensure_package_manager {
+  case ${OS} in
+    macos)
+      ensure_homebrew
+      ;;
+    Linux)
+      ensure_paru
+      ;;
+  esac
+}
+
+function ensure_packages_list {
+  if [ ! -f ./"${OS}_packages.txt" ]; then
+    TMP_PACKAGES_FILE=true
+    echo "Existing ${OS}_packages.txt not found. Downloading packages list..."
+    curl --silent "$PACKAGES_LIST_URL" --output ./"${OS}_packages.txt"
+  fi 
+}
+
+function determine_new_packages {
+  # Read in desired packages
+  packages=()
+  while IFS=$'\n\t' read -r line; do
+    packages+=("$line")
+  done < ./"${OS}_packages.txt"
+
+  # Read in installed packages
+  local existing_packages=($(brew leaves))
+
+  # Filter desired packages against installed packages
+  for i in "${packages[@]}"; do
+    skip=
+    for j in "${existing_packages[@]}"; do
+      [[ $i == $j ]] && { skip=1; break; }
+    done
+    [[ -n $skip ]] || NEW_PACKAGES+=("$i")
+  done
+  declare -p NEW_PACKAGES > /dev/null
+}
+
+function install_new_packages {
+  if [ ${#NEW_PACKAGES[@]} -eq 0 ]; then
+    echo "No new packages to install."
+  else
+    echo "New packages to install: ${NEW_PACKAGES[@]}"
+    case ${OS} in
+      macos)
+        brew install "${NEW_PACKAGES[@]}"
+        ;;
+      Linux)
+        paru -S --needed --noconfirm --asexplicit "${NEW_PACKAGES[@]}"
+        ;;
+    esac
+  fi
+}
+
+function install_dotfiles {
+  if [ -d "$HOME/.dotfiles" ]; then
+    echo "$HOME/.dotfiles already exists. Skipping installation."
+  else
+    git clone "git@github.com:$DOTFILES_REPO" "$HOME/.dotfiles" &&
+    pushd "$HOME/.dotfiles" &&
+    git submodule init &&
+    git submodule update &&
+    ./install.sh
+    popd
+  fi
+}
+
+function cleanup {
+  if [ "$TMP_PACKAGES_FILE" == true ]; then
+    rm -f ./"${OS}_packages.txt"
+  fi
+}
+
+function synchronize_packages {
+  ensure_package_manager
+  ensure_packages_list
+  determine_new_packages
+  install_new_packages
+}
+
+function bootstrap {
+  synchronize_packages
+  install_dotfiles
+}
+
+if [ -z "${BASH_SOURCE-}" ]; then # Script being run piped from curl into bash
+  bootstrap
+  cleanup
+elif [ "$0" = "$BASH_SOURCE" ]; then # Script being run by calling it
+  bootstrap
+fi # If not either of above cases, script is being sourced, nothing to do
