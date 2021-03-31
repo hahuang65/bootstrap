@@ -84,7 +84,7 @@ function install_new_packages {
   if [ ${#NEW_PACKAGES[@]} -eq 0 ]; then
     echo "No new packages to install."
   else
-    echo "New packages to install: ${NEW_PACKAGES[@]}"
+    echo "Installing packages: ${NEW_PACKAGES[@]}"
     case ${OS} in
       macos)
         brew install "${NEW_PACKAGES[@]}"
