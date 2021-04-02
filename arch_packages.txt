@@ -26,6 +26,7 @@ htop
 httpie
 isync
 jq
+kanshi
 keybase
 keychain
 kitty
