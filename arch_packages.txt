@@ -26,7 +26,6 @@ htop
 httpie
 isync
 jq
-kanshi
 keybase
 keychain
 kitty
@@ -59,7 +58,7 @@ shfmt
 slack-desktop
 slurp
 stubby
-sway
+sway-git
 swayidle
 swaylock-effects-git
 syncthing
