@@ -20,12 +20,13 @@ github-cli
 glfw-wayland
 go
 goobook
-google-chrome
 grex
+grim
 htop
 httpie
 isync
 jq
+kanshi
 keybase
 keychain
 kitty
@@ -56,6 +57,7 @@ rust-analyzer
 shellcheck
 shfmt
 slack-desktop
+slurp
 stubby
 sway
 swayidle
@@ -71,4 +73,5 @@ weechat
 wl-clipboard
 wofi
 yank
+zathura
 zeal
