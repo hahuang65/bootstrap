@@ -71,8 +71,7 @@ function determine_new_packages {
   # Read in installed packages
   case ${OS} in
     macos)
-      # existing_packages=($(brew leaves))
-      existing_packages=(1 2 3)
+      existing_packages=($(brew leaves))
       ;;
     arch)
       existing_packages=($(comm -23 <(pacman --query --quiet --explicit | sort) <({ pacman --query --quiet --groups base-devel; expac --listdelim '\n' '%E' base; } | sort --unique)))
