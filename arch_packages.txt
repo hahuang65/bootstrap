@@ -12,6 +12,7 @@ catimg
 dhcpcd
 diff-so-fancy
 direnv
+discord
 docker-compose
 emacs-gcc-wayland-devel-bin
 expac
