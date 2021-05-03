@@ -71,6 +71,7 @@ urlscan
 vi
 waybar
 weechat
+wget
 wl-clipboard
 wofi
 yank
