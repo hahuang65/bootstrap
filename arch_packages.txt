@@ -17,6 +17,7 @@ docker-compose
 emacs-gcc-wayland-devel-bin
 expac
 fd
+ferdi-bin
 github-cli
 glfw-wayland
 go
