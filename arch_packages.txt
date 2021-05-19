@@ -1,5 +1,7 @@
 alsa-utils
 asdf-vm
+aspell
+aspell-en
 aws-cli
 bandwhich
 bash-completion
@@ -9,6 +11,7 @@ bluez
 bluez-utils
 brightnessctl
 catimg
+ctags
 dhcpcd
 diff-so-fancy
 direnv
@@ -20,6 +23,7 @@ fd
 ferdi-bin
 github-cli
 glfw-wayland
+glow
 go
 goobook
 grex
