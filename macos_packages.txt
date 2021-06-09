@@ -5,7 +5,6 @@ bash
 bat
 clementtsang/bottom/bottom
 d12frosted/emacs-plus/emacs-plus@28
-diff-so-fancy
 direnv
 dog
 editorconfig
@@ -14,6 +13,7 @@ ferdi
 findutils
 gh
 git
+git-delta
 glow
 grex
 hashicorp/tap/terraform-ls
