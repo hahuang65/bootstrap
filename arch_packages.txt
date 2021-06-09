@@ -13,7 +13,6 @@ brightnessctl
 catimg
 ctags
 dhcpcd
-diff-so-fancy
 direnv
 discord
 docker-compose
@@ -21,6 +20,7 @@ emacs-gcc-wayland-devel-bin
 expac
 fd
 ferdi-bin
+git-delta
 github-cli
 glfw-wayland
 glow
@@ -75,6 +75,7 @@ ttf-font-awesome-4
 urlscan
 vi
 waybar
+waynergy-git
 weechat
 wget
 wl-clipboard
