@@ -7,9 +7,11 @@ bandwhich
 bash-completion
 bashtop
 bat-extras-git
+blueberry
 bluez
 bluez-utils
 brightnessctl
+caja
 catimg
 ctags
 dhcpcd
@@ -79,6 +81,7 @@ waynergy-git
 weechat
 wget
 wl-clipboard
+wlroots-git
 wofi
 yank
 zathura
