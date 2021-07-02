@@ -43,7 +43,7 @@ msmtp
 ncspot
 neofetch
 neomutt
-neovim-nightly-bin
+neovim
 notmuch
 npm
 otf-font-awesome-4
@@ -81,7 +81,6 @@ waynergy-git
 weechat
 wget
 wl-clipboard
-wlroots-git
 wofi
 yank
 zathura
