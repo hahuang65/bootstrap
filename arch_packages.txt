@@ -47,6 +47,7 @@ neovim
 notmuch
 npm
 otf-font-awesome-4
+pastel
 pgcli
 pick
 playerctl
