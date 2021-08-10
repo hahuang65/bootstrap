@@ -27,6 +27,7 @@ moreutils
 msmtp
 neomutt
 neovim
+pastel
 pgcli
 pick
 postgresql
