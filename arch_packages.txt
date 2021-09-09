@@ -18,6 +18,7 @@ dhcpcd
 direnv
 discord
 docker-compose
+dog
 emacs-gcc-wayland-devel-bin
 expac
 fd
@@ -46,12 +47,13 @@ neomutt
 neovim
 notmuch
 npm
+openresolv
+openvpn
 otf-font-awesome-4
 pastel
 pgcli
 pick
 playerctl
-plex-media-player
 powertop
 prettyping
 procs
