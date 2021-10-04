@@ -1,0 +1,11 @@
+bartender
+brave-browser
+dash
+docker
+ferdi
+keybase
+kitty
+onyx
+slack
+ubersicht
+viscosity

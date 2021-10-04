@@ -20,6 +20,7 @@ PACKAGES_LIST_URL="https://raw.githubusercontent.com/hahuang65/bootstrap/main/${
 DOTFILES_REPO="hahuang65/dotfiles"
 TMP_PACKAGES_FILE=false
 NEW_PACKAGES=()
+NEW_CASKS=()
 
 function ensure_homebrew {
   if ! (hash brew) 2> /dev/null; then
@@ -89,6 +90,46 @@ function determine_new_packages {
   declare -p NEW_PACKAGES > /dev/null
 }
 
+function determine_new_casks {
+  # Read in desired casks
+  casks=()
+  while IFS=$'\n\t' read -r line; do
+    casks+=("$line")
+  done < ./"${OS}_casks.txt"
+
+  local existing_casks=()  
+
+  # Read in installed casks
+  case ${OS} in
+    macos)
+      existing_casks=($(brew list --casks))
+      ;;
+  esac
+
+  # Filter desired casks against installed casks
+  for i in "${casks[@]}"; do
+    skip=
+    for j in "${existing_casks[@]}"; do
+      [[ $i == $j ]] && { skip=1; break; }
+    done
+    [[ -n $skip ]] || NEW_CASKS+=("$i")
+  done
+  declare -p NEW_CASKS > /dev/null
+}
+
+function install_new_casks {
+  if [ ${#NEW_CASKS[@]} -eq 0 ]; then
+    echo "No new casks to install."
+  else
+    echo "Installing casks: ${NEW_CASKS[@]}"
+    case ${OS} in
+      macos)
+        brew install --casks "${NEW_CASKS[@]}"
+        ;;
+    esac
+  fi
+}
+
 function install_new_packages {
   if [ ${#NEW_PACKAGES[@]} -eq 0 ]; then
     echo "No new packages to install."
@@ -129,6 +170,11 @@ function synchronize_packages {
   ensure_packages_list
   determine_new_packages
   install_new_packages
+
+  if [ ${OS} = 'macos' ]; then
+    determine_new_casks
+    install_new_casks
+  fi
 }
 
 function bootstrap {
