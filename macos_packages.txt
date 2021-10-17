@@ -29,6 +29,7 @@ neovim
 pastel
 pgcli
 pick
+poppler
 postgresql
 prettier
 prettyping
@@ -46,3 +47,4 @@ universal-ctags
 weechat
 wget
 yank
+yarn

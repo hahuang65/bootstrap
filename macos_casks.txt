@@ -6,6 +6,8 @@ ferdi
 keybase
 kitty
 onyx
+plex-media-player
 slack
 ubersicht
 viscosity
+zoom
