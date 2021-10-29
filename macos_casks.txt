@@ -1,8 +1,8 @@
 bartender
-brave-browser
 dash
 docker
 ferdi
+google-chrome
 keybase
 kitty
 onyx

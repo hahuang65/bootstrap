@@ -29,6 +29,7 @@ glfw-wayland
 glow
 go
 goobook
+google-chrome
 grex
 grim
 htop
