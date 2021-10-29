@@ -8,6 +8,8 @@ kitty
 onyx
 plex-media-player
 slack
+synergy
+tableplus
 ubersicht
 viscosity
 zoom
