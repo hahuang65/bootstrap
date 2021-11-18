@@ -8,6 +8,7 @@ kitty
 onyx
 plex-media-player
 slack
+spotify
 synergy
 tableplus
 ubersicht
