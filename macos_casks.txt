@@ -13,4 +13,5 @@ synergy
 tableplus
 ubersicht
 viscosity
+wezterm
 zoom
