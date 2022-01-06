@@ -87,6 +87,7 @@ vi
 waybar
 waynergy-git
 weechat
+wezterm
 wget
 wl-clipboard
 wofi
