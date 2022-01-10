@@ -13,5 +13,5 @@ synergy
 tableplus
 ubersicht
 viscosity
-wezterm
+wez/wezterm/wezterm-nightly
 zoom
