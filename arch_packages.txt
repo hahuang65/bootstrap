@@ -36,7 +36,6 @@ grex
 grim
 htop
 httpie
-ijq
 isync
 jq
 kanshi
@@ -75,7 +74,7 @@ shfmt
 slack-desktop
 slurp
 stubby
-sway-git
+sway
 swayidle
 swaylock-effects-git
 syncthing
