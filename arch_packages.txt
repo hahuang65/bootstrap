@@ -15,15 +15,14 @@ caja
 catimg
 ctags
 delve
-dhcpcd
 direnv
-discord
 docker-compose
 dog
 emacs-gcc-wayland-devel-bin
 expac
 fd
 ferdi-bin
+git
 git-delta
 github-cli
 glfw-wayland
@@ -37,11 +36,11 @@ grim
 htop
 httpie
 isync
+iwd
 jq
 kanshi
 keybase
 keychain
-kitty
 mako
 miller
 msmtp
@@ -51,7 +50,7 @@ neomutt
 neovim
 notmuch
 npm
-openresolv
+openssh
 openvpn
 otf-font-awesome-4
 pastel
@@ -71,7 +70,7 @@ rsync
 rust-analyzer
 shellcheck
 shfmt
-slack-desktop
+slack-wayland
 slurp
 stubby
 sway
@@ -90,6 +89,7 @@ wezterm-nightly-bin
 wget
 wl-clipboard
 wofi
+xdg-user-dirs
 yank
 zathura
 zeal
