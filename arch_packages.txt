@@ -48,6 +48,8 @@ neofetch
 neomutt
 neovim
 notmuch
+noto-fonts-emoji
+noto-fonts-sc
 npm
 openssh
 openvpn
