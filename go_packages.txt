@@ -1,0 +1,2 @@
+git.sr.ht/~hwrd/pst@latest
+git.sr.ht/~hwrd/ssm@latest

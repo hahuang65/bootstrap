@@ -130,6 +130,14 @@ function install_new_casks {
   fi
 }
 
+function install_go_packages {
+  for pkg in $(cat ./go_packages.txt)
+  do
+    echo "Installing: ${pkg}"
+    go install "${pkg}"
+  done
+}
+
 function install_new_packages {
   if [ ${#NEW_PACKAGES[@]} -eq 0 ]; then
     echo "No new packages to install."
@@ -170,6 +178,7 @@ function synchronize_packages {
   ensure_packages_list
   determine_new_packages
   install_new_packages
+  install_go_packages
 
   if [ ${OS} = 'macos' ]; then
     determine_new_casks
