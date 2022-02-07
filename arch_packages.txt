@@ -37,6 +37,7 @@ htop
 httpie
 isync
 iwd
+iwgtk
 jq
 keybase
 keychain
