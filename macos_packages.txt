@@ -1,3 +1,4 @@
+aerc
 asdf
 awscli
 bandwhich
@@ -5,7 +6,6 @@ bash
 bat
 clementtsang/bottom/bottom
 curlie
-d12frosted/emacs-plus/emacs-plus@28
 direnv
 dog
 editorconfig
@@ -18,13 +18,10 @@ glow
 grex
 hashicorp/tap/terraform-ls
 httpie
-isync
 jq
 koekeishiya/formulae/skhd
 koekeishiya/formulae/yabai
 moreutils
-msmtp
-neomutt
 neovim
 pastel
 pgcli
