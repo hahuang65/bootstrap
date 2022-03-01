@@ -1,3 +1,4 @@
+aerc
 alsa-utils
 asdf-vm
 aspell
@@ -18,7 +19,6 @@ delve
 direnv
 docker-compose
 dog
-emacs-gcc-wayland-devel-bin
 expac
 fd
 ferdi-bin
@@ -35,7 +35,6 @@ grex
 grim
 htop
 httpie
-isync
 iwd
 iwgtk
 jq
@@ -43,12 +42,9 @@ keybase
 keychain
 mako
 miller
-msmtp
 ncspot
 neofetch
-neomutt
 neovim
-notmuch
 noto-fonts-emoji
 noto-fonts-sc
 npm
