@@ -41,6 +41,7 @@ speedtest-cli
 syncthing
 tflint
 universal-ctags
+w3m
 weechat
 wget
 yank
