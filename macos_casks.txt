@@ -11,6 +11,7 @@ slack
 spotify
 synergy
 tableplus
+transmit
 ubersicht
 viscosity
 wez/wezterm/wezterm-nightly
