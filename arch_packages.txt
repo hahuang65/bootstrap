@@ -60,6 +60,7 @@ prettyping
 procs
 pueue
 pulseaudio-alsa
+pyright
 python-gobject
 qt5-wayland
 reflector
