@@ -1,3 +1,4 @@
+arctype
 bartender
 caffeine
 dash
@@ -15,5 +16,5 @@ tableplus
 transmit
 ubersicht
 viscosity
-wez/wezterm/wezterm-nightly
+wezterm-nightly
 zoom

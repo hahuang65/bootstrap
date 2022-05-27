@@ -41,6 +41,7 @@ shfmt
 speedtest-cli
 syncthing
 tflint
+bloznelis/tap/typioca
 universal-ctags
 w3m
 weechat

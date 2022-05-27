@@ -1,0 +1,11 @@
+aws/tap
+bloznelis/tap
+clementtsang/bottom
+d12frosted/emacs-plus
+hashicorp/tap
+homebrew/cask
+homebrew/core
+homebrew/services
+koekeishiya/formulae
+snyk/tap
+wez/wezterm

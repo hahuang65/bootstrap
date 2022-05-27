@@ -1,4 +1,4 @@
+git.sr.ht/~emersion/hut@latest
 git.sr.ht/~hwrd/pst@latest
 git.sr.ht/~hwrd/ssm@latest
-git.sr.ht/~emersion/hut@latest
 github.com/magefile/mage@latest

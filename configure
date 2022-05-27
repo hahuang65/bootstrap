@@ -124,6 +124,7 @@ function install_new_casks {
     echo "Installing casks: ${NEW_CASKS[@]}"
     case ${OS} in
       macos)
+        ensure_homewbrew_taps
         brew install --casks "${NEW_CASKS[@]}"
         ;;
     esac
@@ -131,9 +132,9 @@ function install_new_casks {
 }
 
 function install_go_packages {
+  echo "Installing/updating Go packages"
   for pkg in $(cat ./go_packages.txt)
   do
-    echo "Installing: ${pkg}"
     go install "${pkg}"
   done
 }
@@ -145,6 +146,7 @@ function install_new_packages {
     echo "Installing packages: ${NEW_PACKAGES[@]}"
     case ${OS} in
       macos)
+        ensure_homebrew_taps
         brew install "${NEW_PACKAGES[@]}"
         ;;
       arch)
@@ -165,6 +167,17 @@ function install_dotfiles {
     ./install.sh
     popd
   fi
+}
+
+function ensure_homebrew_taps {
+  mapfile -t tapped < <( brew tap )
+  mapfile -t desired <  <( cat ./brew_taps.txt )
+  to_tap=(`echo ${tapped[@]} ${desired[@]} | tr ' ' '\n' | sort | uniq -u `)
+
+  for i in "${to_tap[@]}"; do
+    echo "Tapping ${i}"
+    brew tap ${i}
+  done
 }
 
 function cleanup {
