@@ -7,7 +7,6 @@ aws-cli
 bandwhich
 bash-completion
 bashtop
-bat-extras-git
 blueberry
 bluez
 bluez-utils
@@ -19,6 +18,7 @@ delve
 direnv
 docker-compose
 dog
+downgrade
 expac
 fd
 ferdi-bin
