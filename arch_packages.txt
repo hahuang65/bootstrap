@@ -7,6 +7,7 @@ aws-cli
 bandwhich
 bash-completion
 bashtop
+bat
 blueberry
 bluez
 bluez-utils
