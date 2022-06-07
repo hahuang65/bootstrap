@@ -1,4 +1,5 @@
 git.sr.ht/~emersion/hut@latest
 git.sr.ht/~hwrd/pst@latest
 git.sr.ht/~hwrd/ssm@latest
+github.com/go-delve/delve/cmd/dlv@latest
 github.com/magefile/mage@latest
