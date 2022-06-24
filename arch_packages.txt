@@ -17,6 +17,7 @@ catimg
 ctags
 delve
 direnv
+docker
 docker-compose
 dog
 downgrade
