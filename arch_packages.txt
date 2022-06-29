@@ -23,7 +23,6 @@ dog
 downgrade
 expac
 fd
-ferdi-bin
 git
 git-delta
 github-cli
@@ -37,6 +36,7 @@ grex
 grim
 htop
 httpie
+inkdrop
 iwd
 iwgtk
 jq
