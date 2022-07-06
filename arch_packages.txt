@@ -1,3 +1,4 @@
+1password
 aerc
 alsa-utils
 asdf-vm
@@ -57,6 +58,7 @@ pastel
 pgcli
 pick
 playerctl
+polkit-gnome
 powertop
 prettyping
 procs
