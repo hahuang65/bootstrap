@@ -1,3 +1,4 @@
+1password
 arctype
 bartender
 caffeine
@@ -5,6 +6,7 @@ dash
 docker
 ferdi
 google-chrome
+inkdrop
 keybase
 kitty
 onyx
@@ -13,6 +15,7 @@ slack
 spotify
 synergy
 tableplus
+thunderbird
 transmit
 ubersicht
 viscosity
