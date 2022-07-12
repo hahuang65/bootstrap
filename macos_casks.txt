@@ -15,7 +15,6 @@ slack
 spotify
 synergy
 tableplus
-thunderbird
 transmit
 ubersicht
 viscosity
