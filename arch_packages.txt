@@ -24,6 +24,7 @@ dog
 downgrade
 expac
 fd
+firefox
 git
 git-delta
 github-cli
