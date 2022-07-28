@@ -5,6 +5,7 @@ caffeine
 dash
 docker
 ferdi
+firefox
 google-chrome
 inkdrop
 keybase
