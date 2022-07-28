@@ -52,6 +52,7 @@ neovim-nightly-bin
 noto-fonts-emoji
 noto-fonts-sc
 npm
+ntp
 openssh
 openvpn
 otf-font-awesome-4
