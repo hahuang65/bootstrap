@@ -57,6 +57,7 @@ openssh
 openvpn
 otf-font-awesome-4
 pastel
+pavucontrol
 pgcli
 pick
 playerctl
