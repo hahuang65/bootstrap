@@ -46,5 +46,6 @@ universal-ctags
 w3m
 weechat
 wget
+xsv
 yank
 yarn
