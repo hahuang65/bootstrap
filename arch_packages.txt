@@ -24,6 +24,7 @@ dog
 downgrade
 expac
 fd
+ferdium-bin
 firefox
 git
 git-delta
