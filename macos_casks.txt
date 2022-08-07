@@ -4,7 +4,7 @@ bartender
 caffeine
 dash
 docker
-ferdi
+ferdium
 firefox
 google-chrome
 inkdrop
