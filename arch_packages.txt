@@ -26,6 +26,7 @@ expac
 fd
 ferdium-bin
 firefox
+flyctl-bin
 git
 git-delta
 github-cli
@@ -98,5 +99,6 @@ wl-clipboard
 wofi
 xdg-user-dirs
 yank
+yarn
 zathura
 zeal
