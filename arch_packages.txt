@@ -93,7 +93,7 @@ vi
 waybar
 waynergy-git
 weechat
-wezterm-nightly-bin
+wezterm-git
 wget
 wl-clipboard
 wofi
