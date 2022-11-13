@@ -6,3 +6,4 @@ github.com/go-delve/delve/cmd/dlv@latest
 github.com/magefile/mage@latest
 github.com/noahgorstein/jqp@latest
 golang.org/x/tools/cmd/godoc@latest
+honnef.co/go/tools/cmd/staticcheck@latest
