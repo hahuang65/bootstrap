@@ -9,7 +9,6 @@ firefox
 google-chrome
 inkdrop
 keybase
-onyx
 plex-media-player
 slack
 spotify

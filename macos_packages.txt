@@ -28,7 +28,6 @@ pastel
 pgcli
 pick
 poppler
-postgresql
 prettier
 prettyping
 procs
@@ -36,7 +35,6 @@ pueue
 pyright
 ripgrep
 rust-analyzer
-serverless
 shellcheck
 shfmt
 speedtest-cli
