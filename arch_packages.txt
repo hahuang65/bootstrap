@@ -49,7 +49,7 @@ mako
 miller
 ncspot
 neofetch
-neovim-nightly-bin
+neovim
 noto-fonts-emoji
 noto-fonts-sc
 npm
