@@ -14,8 +14,6 @@ bluez
 bluez-utils
 brightnessctl
 catimg
-ctags
-delve
 direnv
 docker
 docker-compose
@@ -34,7 +32,6 @@ glow
 go
 goobook
 google-chrome
-gopls
 grex
 grim
 htop
@@ -68,15 +65,11 @@ prettyping
 procs
 pueue
 pulseaudio-alsa
-pyright
 python-gobject
 qt5-wayland
 reflector
 ripgrep
 rsync
-rust-analyzer
-shellcheck
-shfmt
 slack-desktop
 slurp
 stubby

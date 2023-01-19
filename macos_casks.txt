@@ -1,5 +1,4 @@
 1password
-arctype
 bartender
 caffeine
 dash
