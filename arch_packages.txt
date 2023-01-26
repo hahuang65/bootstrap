@@ -36,6 +36,7 @@ grex
 grim
 htop
 httpie
+hyprland
 inkdrop
 iwd
 iwgtk
@@ -58,8 +59,9 @@ pastel
 pavucontrol
 pgcli
 pick
+pipewire
 playerctl
-polkit-gnome
+polkit-kde-agent
 powertop
 prettyping
 procs
@@ -67,6 +69,7 @@ pueue
 pulseaudio-alsa
 python-gobject
 qt5-wayland
+qt6-wayland
 reflector
 ripgrep
 rsync
@@ -88,8 +91,10 @@ waynergy-git
 weechat
 wezterm-git
 wget
+wireplumber
 wl-clipboard
 wofi
+xdg-desktop-portal-hyprland-git
 xdg-user-dirs
 yank
 yarn
