@@ -1,6 +1,5 @@
 1password
 aerc
-alsa-utils
 asdf-vm
 aspell
 aspell-en
@@ -9,7 +8,6 @@ bandwhich
 bash-completion
 bashtop
 bat
-blueberry
 bluez
 bluez-utils
 brightnessctl
@@ -36,7 +34,7 @@ grex
 grim
 htop
 httpie
-hyprland
+hyprland-git
 inkdrop
 iwd
 iwgtk
@@ -60,13 +58,15 @@ pavucontrol
 pgcli
 pick
 pipewire
+pipewire-alsa
+pipewire-jack
+pipewire-pulse
 playerctl
 polkit-kde-agent
 powertop
 prettyping
 procs
 pueue
-pulseaudio-alsa
 python-gobject
 qt5-wayland
 qt6-wayland
