@@ -85,7 +85,7 @@ ttf-font-awesome
 ttf-font-awesome-4
 urlscan
 vi
-waybar-hyprland-git
+waybar
 waynergy-git
 weechat
 wezterm-git
