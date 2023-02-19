@@ -59,7 +59,6 @@ pgcli
 pick
 pipewire
 pipewire-alsa
-pipewire-jack
 pipewire-pulse
 playerctl
 polkit-kde-agent
