@@ -92,7 +92,6 @@ wget
 wireplumber
 wl-clipboard
 wofi
-xdg-desktop-portal-hyprland-git
 xdg-user-dirs
 yank
 yarn
