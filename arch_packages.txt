@@ -34,7 +34,6 @@ grex
 grim
 htop
 httpie
-hyprland-git
 inkdrop
 iwd
 iwgtk
