@@ -1,8 +1,6 @@
 1password
 aerc
 asdf-vm
-aspell
-aspell-en
 aws-cli
 bandwhich
 bash-completion
@@ -25,9 +23,7 @@ flyctl-bin
 git
 git-delta
 github-cli
-glfw-wayland
 glow
-go
 goobook
 google-chrome
 grex
@@ -36,7 +32,6 @@ htop
 httpie
 inkdrop
 iwd
-iwgtk
 jq
 keybase
 keychain
@@ -53,7 +48,6 @@ openssh
 openvpn
 otf-font-awesome-4
 pastel
-pavucontrol
 pgcli
 pick
 pipewire
@@ -66,8 +60,6 @@ prettyping
 procs
 pueue
 python-gobject
-qt5-wayland
-qt6-wayland
 reflector
 ripgrep
 rsync
