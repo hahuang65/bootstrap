@@ -1,6 +1,8 @@
 1password
 1password-cli
 aerc
+arc-gtk-theme
+arc-icon-theme
 asdf-vm
 aws-cli
 bandwhich
@@ -73,11 +75,13 @@ swaylock-effects-git
 syncthing
 terraform-ls
 thunar
+thunar-archive-plugin
 ttf-font-awesome
 ttf-font-awesome-4
 unzip
 urlscan
 vi
+vim
 waybar
 waynergy-git
 weechat
