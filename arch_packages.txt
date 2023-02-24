@@ -24,6 +24,7 @@ ferdium-bin
 file-roller
 firefox
 flyctl-bin
+foot
 git
 git-delta
 github-cli
@@ -42,7 +43,7 @@ jq
 keybase
 keychain
 mako
-man
+man-db
 miller
 ncspot
 neofetch
