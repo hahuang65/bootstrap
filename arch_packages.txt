@@ -42,6 +42,7 @@ jq
 keybase
 keychain
 mako
+man
 miller
 ncspot
 neofetch
@@ -86,6 +87,7 @@ urlscan
 usbutils
 vi
 vim
+w3m
 waybar
 waynergy-git
 weechat
