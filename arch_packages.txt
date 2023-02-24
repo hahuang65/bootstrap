@@ -77,7 +77,6 @@ sway
 swayidle
 swaylock-effects-git
 syncthing
-terraform-ls
 thunar
 thunar-archive-plugin
 ttf-font-awesome
