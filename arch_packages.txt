@@ -35,6 +35,7 @@ grim
 gvfs
 htop
 httpie
+inetutils
 inkdrop
 iwd
 jq
@@ -82,6 +83,7 @@ ttf-font-awesome
 ttf-font-awesome-4
 unzip
 urlscan
+usbutils
 vi
 vim
 waybar
