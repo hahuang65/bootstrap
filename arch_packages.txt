@@ -45,6 +45,7 @@ keychain
 mako
 man-db
 miller
+mpv
 ncspot
 neofetch
 neovim
