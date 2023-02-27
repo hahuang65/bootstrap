@@ -62,6 +62,7 @@ pick
 pipewire
 pipewire-alsa
 pipewire-pulse
+pkgfile
 playerctl
 polkit-kde-agent
 powertop
