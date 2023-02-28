@@ -49,6 +49,7 @@ mpv
 ncspot
 neofetch
 neovim
+ngrok
 noto-fonts-emoji
 noto-fonts-sc
 npm
