@@ -78,6 +78,7 @@ slack-desktop
 slurp
 stubby
 sway
+swaybg
 swayidle
 swaylock-effects-git
 syncthing
