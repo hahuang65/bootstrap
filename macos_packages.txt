@@ -30,6 +30,7 @@ koekeishiya/formulae/skhd
 koekeishiya/formulae/yabai
 lazydocker
 moreutils
+mpv
 neofetch
 neovim
 packer
