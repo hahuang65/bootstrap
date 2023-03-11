@@ -25,6 +25,7 @@ file-roller
 firefox
 flyctl-bin
 foot
+fuzzel
 git
 git-delta
 github-cli
