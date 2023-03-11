@@ -100,7 +100,6 @@ wezterm-git
 wget
 wireplumber
 wl-clipboard
-wofi
 xdg-user-dirs
 xorg-xwayland
 yank
