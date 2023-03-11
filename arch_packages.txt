@@ -48,7 +48,7 @@ miller
 mpv
 ncspot
 neofetch
-neovim
+neovim-nightly
 ngrok
 noto-fonts-emoji
 noto-fonts-sc
