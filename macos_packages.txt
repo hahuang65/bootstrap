@@ -12,6 +12,7 @@ curlie
 direnv
 dog
 editorconfig
+erdtree
 fd
 findutils
 gh
