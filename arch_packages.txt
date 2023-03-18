@@ -106,4 +106,5 @@ xorg-xwayland
 yank
 yarn
 zathura
+zathura-pdf-mupdf
 zeal
