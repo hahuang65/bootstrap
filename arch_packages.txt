@@ -28,6 +28,7 @@ firefox
 flyctl-bin
 foot
 fuzzel
+fzf
 git
 git-delta
 github-cli
