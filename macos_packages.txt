@@ -5,6 +5,7 @@ aws/tap/aws-sam-cli
 awscli
 bandwhich
 bash
+bash-completion
 bat
 blueutil
 clementtsang/bottom/bottom
@@ -46,7 +47,6 @@ poppler
 postgresql@14
 prettyping
 procs
-pueue
 ripgrep
 snyk/tap/snyk
 speedtest-cli
