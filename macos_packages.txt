@@ -8,8 +8,11 @@ bash
 bat
 blueutil
 clementtsang/bottom/bottom
+colima
 curlie
 direnv
+docker
+docker-compose
 dog
 editorconfig
 erdtree

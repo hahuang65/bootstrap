@@ -2,7 +2,6 @@
 bartender
 caffeine
 dash
-docker
 ferdium
 firefox
 google-chrome
