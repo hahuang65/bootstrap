@@ -45,6 +45,7 @@ pgcli
 pick
 poppler
 postgresql@14
+pre-commit
 prettyping
 procs
 ripgrep
