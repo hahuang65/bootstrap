@@ -9,10 +9,8 @@ bash-completion
 bat
 blueutil
 bottom
-colima
 curlie
 direnv
-docker
 docker-compose
 dog
 editorconfig

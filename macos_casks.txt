@@ -3,6 +3,7 @@ bartender
 caffeine
 cleanmymac
 dash
+docker
 ferdium
 firefox
 google-chrome
