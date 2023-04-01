@@ -124,7 +124,7 @@ function install_new_casks {
     echo "Installing casks: ${NEW_CASKS[@]}"
     case ${OS} in
       macos)
-        ensure_homewbrew_taps
+        ensure_homebrew_taps
         brew install --casks "${NEW_CASKS[@]}"
         ;;
     esac

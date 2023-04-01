@@ -1,7 +1,7 @@
 aws/tap
-clementtsang/bottom
 hashicorp/tap
 homebrew/cask
+homebrew/cask-versions
 homebrew/core
 homebrew/services
 koekeishiya/formulae
