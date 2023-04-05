@@ -38,6 +38,7 @@ google-chrome
 grex
 grim
 gvfs
+headset
 htop
 httpie
 inetutils
