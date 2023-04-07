@@ -41,6 +41,7 @@ gvfs
 headset
 htop
 httpie
+httpie-desktop-bin
 inetutils
 inkdrop
 iwd
