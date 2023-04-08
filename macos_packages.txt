@@ -2,7 +2,6 @@ aerc
 amazon-ecs-cli
 asdf
 aws/tap/aws-sam-cli
-awscli
 bandwhich
 bash
 bash-completion
@@ -56,4 +55,3 @@ weechat
 wget
 xsv
 yank
-yarn
