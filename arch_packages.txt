@@ -52,7 +52,6 @@ mako
 man-db
 miller
 mpv
-mullvad-browser-bin
 mullvad-vpn
 ncspot
 neofetch
