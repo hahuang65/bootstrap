@@ -8,6 +8,7 @@ ferdium
 firefox
 google-chrome
 headset
+httpie
 inkdrop
 keybase
 onyx
