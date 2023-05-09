@@ -42,6 +42,7 @@ headset
 htop
 httpie
 httpie-desktop-bin
+hwatch
 inetutils
 inkdrop
 iwd

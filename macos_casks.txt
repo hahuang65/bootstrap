@@ -11,6 +11,7 @@ headset
 httpie
 inkdrop
 keybase
+obsidian
 onyx
 plex
 slack

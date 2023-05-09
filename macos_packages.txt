@@ -26,6 +26,7 @@ goreleaser
 grex
 httpie
 hub
+hwatch
 imagemagick
 isync
 jq
