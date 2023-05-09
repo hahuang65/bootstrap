@@ -9,7 +9,6 @@ firefox
 google-chrome
 headset
 httpie
-inkdrop
 keybase
 obsidian
 onyx
