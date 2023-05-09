@@ -44,7 +44,6 @@ httpie
 httpie-desktop-bin
 hwatch
 inetutils
-inkdrop
 iwd
 jq
 keybase
@@ -62,6 +61,7 @@ noto-fonts-emoji
 noto-fonts-sc
 npm
 ntp
+obsidian
 openssh
 openvpn
 otf-font-awesome-4
