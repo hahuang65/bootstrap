@@ -16,7 +16,6 @@ brightnessctl
 catimg
 direnv
 docker
-docker-compose
 dog
 downgrade
 erdtree

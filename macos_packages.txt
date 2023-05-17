@@ -10,7 +10,6 @@ blueutil
 bottom
 curlie
 direnv
-docker-compose
 dog
 editorconfig
 erdtree
