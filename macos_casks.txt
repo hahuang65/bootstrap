@@ -7,7 +7,6 @@ docker
 ferdium
 firefox
 google-chrome
-headset
 httpie
 keybase
 obsidian
