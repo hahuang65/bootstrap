@@ -13,7 +13,6 @@ bat
 bluez
 bluez-utils
 brightnessctl
-catimg
 direnv
 docker
 dog
@@ -36,13 +35,11 @@ goobook
 google-chrome
 grex
 grim
-gvfs
-headset
 htop
 httpie
-httpie-desktop-bin
 hwatch
 inetutils
+insomnia-bin
 iwd
 jq
 keybase
@@ -70,7 +67,6 @@ pick
 pipewire
 pipewire-alsa
 pipewire-pulse
-pkgfile
 playerctl
 polkit-kde-agent
 powertop
@@ -100,7 +96,6 @@ vi
 vim
 w3m
 waybar
-waynergy-git
 weechat
 wezterm-git
 wget
