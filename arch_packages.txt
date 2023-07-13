@@ -1,7 +1,6 @@
 1password
 1password-cli
 aerc
-ani-cli
 arc-gtk-theme
 arc-icon-theme
 asdf-vm
