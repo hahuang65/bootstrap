@@ -107,4 +107,4 @@ yank
 yarn
 zathura
 zathura-pdf-mupdf
-zeal
+zeal-git
