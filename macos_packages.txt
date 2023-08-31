@@ -1,7 +1,8 @@
+1password-cli
 aerc
 amazon-ecs-cli
 asdf
-aws/tap/aws-sam-cli
+aws-sam-cli
 bandwhich
 bash
 bash-completion
