@@ -9,6 +9,7 @@ bandwhich
 bash-completion
 bashtop
 bat
+blueberry
 bluez
 bluez-utils
 brightnessctl
@@ -41,6 +42,7 @@ inetutils
 insomnia-bin
 iwd
 jq
+kanshi
 keybase
 keychain
 mako
