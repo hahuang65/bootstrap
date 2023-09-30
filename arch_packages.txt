@@ -95,8 +95,6 @@ urlscan
 usbutils
 vi
 vim
-vivaldi
-vivaldi-ffmpeg-codecs
 w3m
 waybar
 weechat

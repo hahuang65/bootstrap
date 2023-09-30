@@ -50,7 +50,6 @@ ripgrep
 snyk/tap/snyk
 speedtest-cli
 syncthing
-vivaldi
 w3m
 watch
 weechat
