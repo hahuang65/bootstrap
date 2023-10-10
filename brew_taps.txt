@@ -1,8 +1,6 @@
 aws/tap
 hashicorp/tap
-homebrew/cask
 homebrew/cask-versions
-homebrew/core
 homebrew/services
 koekeishiya/formulae
 snyk/tap
