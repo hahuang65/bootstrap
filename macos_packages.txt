@@ -30,6 +30,7 @@ hub
 hwatch
 imagemagick
 isync
+ijq
 jq
 koekeishiya/formulae/skhd
 koekeishiya/formulae/yabai
