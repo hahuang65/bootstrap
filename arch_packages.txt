@@ -39,6 +39,7 @@ grim
 htop
 httpie
 hwatch
+ijq
 inetutils
 insomnia-bin
 iwd
