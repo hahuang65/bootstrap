@@ -37,6 +37,7 @@ koekeishiya/formulae/yabai
 lazydocker
 moreutils
 mpv
+mullvadvpn
 neofetch
 neovim
 packer
