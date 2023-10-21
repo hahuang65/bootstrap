@@ -54,6 +54,7 @@ mpv
 mullvad-vpn
 ncspot
 neofetch
+neovide
 neovim-nightly
 ngrok
 noto-fonts-emoji
