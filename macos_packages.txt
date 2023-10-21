@@ -28,9 +28,9 @@ grex
 httpie
 hub
 hwatch
+ijq
 imagemagick
 isync
-ijq
 jq
 koekeishiya/formulae/skhd
 koekeishiya/formulae/yabai
@@ -39,6 +39,7 @@ moreutils
 mpv
 mullvadvpn
 neofetch
+neovide
 neovim
 packer
 pastel
