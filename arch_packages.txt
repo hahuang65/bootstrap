@@ -89,6 +89,7 @@ swaybg
 swayidle
 swaylock-effects-git
 syncthing
+tailspin
 thunar
 thunar-archive-plugin
 ttf-font-awesome
