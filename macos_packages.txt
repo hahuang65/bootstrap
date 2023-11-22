@@ -17,6 +17,7 @@ editorconfig
 erdtree
 fd
 findutils
+fx
 fzf
 gh
 git
@@ -56,6 +57,7 @@ speedtest-cli
 syncthing
 tailspin
 w3m
+walk
 watch
 weechat
 wget
