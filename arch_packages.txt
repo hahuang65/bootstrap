@@ -16,6 +16,7 @@ brightnessctl
 cmake
 direnv
 docker
+docker-compose
 dog
 downgrade
 erdtree
@@ -60,7 +61,6 @@ neovim-nightly
 ngrok
 noto-fonts-emoji
 noto-fonts-sc
-npm
 ntp
 obsidian
 openssh
@@ -112,7 +112,6 @@ wl-clipboard
 xdg-user-dirs
 xorg-xwayland
 yank
-yarn
 zathura
 zathura-pdf-mupdf
 zeal-git
