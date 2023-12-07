@@ -191,12 +191,13 @@ function synchronize_packages {
     ensure_packages_list
     determine_new_packages
     install_new_packages
-    install_go_packages
 
     if [ ${OS} = 'macos' ]; then
         determine_new_casks
         install_new_casks
     fi
+
+    install_go_packages
 }
 
 function bootstrap {
