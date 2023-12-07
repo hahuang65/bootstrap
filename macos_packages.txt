@@ -1,4 +1,3 @@
-1password-cli
 aerc
 amazon-ecs-cli
 asdf
@@ -8,6 +7,7 @@ bash-completion
 bat
 blueutil
 bottom
+cookiecutter
 curlie
 direnv
 dog
@@ -36,7 +36,6 @@ koekeishiya/formulae/yabai
 lazydocker
 moreutils
 mpv
-mullvadvpn
 neofetch
 neovide
 neovim

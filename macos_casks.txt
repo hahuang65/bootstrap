@@ -1,4 +1,5 @@
 1password
+1password-cli
 bartender
 caffeine
 cleanmymac
@@ -8,6 +9,7 @@ ferdium
 firefox
 google-chrome
 keybase
+mullvadvpn
 obsidian
 onyx
 plex
