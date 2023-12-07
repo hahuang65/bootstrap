@@ -2,14 +2,12 @@
 aerc
 amazon-ecs-cli
 asdf
-aws-sam-cli
 bandwhich
 bash
 bash-completion
 bat
 blueutil
 bottom
-cmake
 curlie
 direnv
 dog
