@@ -3,7 +3,7 @@ amazon-ecs-cli
 asdf
 bandwhich
 bash
-bash-completion
+bash-completion@2
 bat
 blueutil
 bottom
@@ -27,6 +27,7 @@ grex
 httpie
 hub
 hwatch
+hyperfine
 ijq
 imagemagick
 isync
