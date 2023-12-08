@@ -60,3 +60,4 @@ weechat
 wget
 xsv
 yank
+zsh
