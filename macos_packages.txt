@@ -51,7 +51,6 @@ prettyping
 procs
 ripgrep
 snyk/tap/snyk
-speedtest-cli
 syncthing
 tailspin
 w3m
