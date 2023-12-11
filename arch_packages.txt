@@ -41,6 +41,7 @@ grim
 htop
 httpie
 hwatch
+hyperfine
 ijq
 inetutils
 insomnia-bin
