@@ -1,19 +1,19 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 set -euo pipefail
 IFS=$'\n\t'
 
 case $(uname) in
-    Darwin)
-        OS="macos"
-        ;;
-    Linux)
-        OS="arch"
-        ;;
-    *)
-        echo "Unsupported OS. Exiting..."
-        return 1
-        ;;
+Darwin)
+  OS="macos"
+  ;;
+Linux)
+  OS="arch"
+  ;;
+*)
+  echo "Unsupported OS. Exiting..."
+  return 1
+  ;;
 esac
 
 PACKAGES_LIST_URL="https://raw.githubusercontent.com/hahuang65/bootstrap/main/${OS}_packages.txt"
@@ -23,191 +23,196 @@ NEW_PACKAGES=()
 NEW_CASKS=()
 
 function ensure_homebrew {
-    if ! (hash brew) 2> /dev/null; then
-        echo "brew not installed. Installing brew..."
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    fi
+  if ! (hash brew) 2>/dev/null; then
+    echo "brew not installed. Installing brew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  fi
 }
 
 function ensure_paru {
-    if !(hash paru) 2> /dev/null; then
-        echo "paru not installed. Installing paru..."
-        rm -rf "/tmp/paru"
-        git clone "https://aur.archlinux.org/paru.git" "/tmp/paru"
-        pushd "/tmp/paru"
-        makepkg --syncdeps --install
-        popd
-        rm -rf "/tmp/paru"
-    fi
+  if ! (hash paru) 2>/dev/null; then
+    echo "paru not installed. Installing paru..."
+    rm -rf "/tmp/paru"
+    git clone "https://aur.archlinux.org/paru.git" "/tmp/paru"
+    pushd "/tmp/paru"
+    makepkg --syncdeps --install
+    popd
+    rm -rf "/tmp/paru"
+  fi
 }
 
 function ensure_package_manager {
-    case ${OS} in
-        macos)
-            ensure_homebrew
-            ;;
-        arch)
-            ensure_paru
-            ;;
-    esac
+  case ${OS} in
+  macos)
+    ensure_homebrew
+    ;;
+  arch)
+    ensure_paru
+    ;;
+  esac
 }
 
 function ensure_packages_list {
-    if [ ! -f ./"${OS}_packages.txt" ]; then
-        TMP_PACKAGES_FILE=true
-        echo "Existing ${OS}_packages.txt not found. Downloading packages list..."
-        curl --silent "$PACKAGES_LIST_URL" --output ./"${OS}_packages.txt"
-    fi
+  if [ ! -f ./"${OS}_packages.txt" ]; then
+    TMP_PACKAGES_FILE=true
+    echo "Existing ${OS}_packages.txt not found. Downloading packages list..."
+    curl --silent "$PACKAGES_LIST_URL" --output ./"${OS}_packages.txt"
+  fi
 }
 
 function determine_new_packages {
-    # Read in desired packages
-    packages=()
-    while IFS=$'\n\t' read -r line; do
-      packages+=($(basename "$line"))
-    done < ./"${OS}_packages.txt"
+  # Read in desired packages
+  packages=()
+  while IFS=$'\n\t' read -r line; do
+    packages+=($(basename "$line"))
+  done <./"${OS}_packages.txt"
 
-    local existing_packages=()
+  local existing_packages=()
 
-    # Read in installed packages
-    case ${OS} in
-        macos)
-          existing_packages=($(brew list -1 --formulae))
-            ;;
-        arch)
-            existing_packages=($(pacman --query --quiet --explicit | sort))
-            ;;
-    esac
+  # Read in installed packages
+  case ${OS} in
+  macos)
+    existing_packages=($(brew list -1 --formulae))
+    ;;
+  arch)
+    existing_packages=($(pacman --query --quiet --explicit | sort))
+    ;;
+  esac
 
-    # Filter desired packages against installed packages
-    for i in "${packages[@]}"; do
-        skip=
-        for j in "${existing_packages[@]}"; do
-            [[ $i == $j ]] && { skip=1; break; }
-        done
-        [[ -n $skip ]] || NEW_PACKAGES+=("$i")
+  # Filter desired packages against installed packages
+  for i in "${packages[@]}"; do
+    skip=
+    for j in "${existing_packages[@]}"; do
+      [[ $i == "$j" ]] && {
+        skip=1
+        break
+      }
     done
-    declare -p NEW_PACKAGES > /dev/null
+    [[ -n $skip ]] || NEW_PACKAGES+=("$i")
+  done
+  declare -p NEW_PACKAGES >/dev/null
 }
 
 function determine_new_casks {
-    # Read in desired casks
-    casks=()
-    while IFS=$'\n\t' read -r line; do
-      casks+=($(basename "$line"))
-    done < ./"${OS}_casks.txt"
+  # Read in desired casks
+  casks=()
+  while IFS=$'\n\t' read -r line; do
+    casks+=($(basename "$line"))
+  done <./"${OS}_casks.txt"
 
-    local existing_casks=()
+  local existing_casks=()
 
-    # Read in installed casks
-    case ${OS} in
-        macos)
-            existing_casks=($(brew list -1 --casks))
-            ;;
-    esac
+  # Read in installed casks
+  case ${OS} in
+  macos)
+    existing_casks=($(brew list -1 --casks))
+    ;;
+  esac
 
-    # Filter desired casks against installed casks
-    for i in "${casks[@]}"; do
-        skip=
-        for j in "${existing_casks[@]}"; do
-            [[ $i == $j ]] && { skip=1; break; }
-        done
-        [[ -n $skip ]] || NEW_CASKS+=("$i")
+  # Filter desired casks against installed casks
+  for i in "${casks[@]}"; do
+    skip=
+    for j in "${existing_casks[@]}"; do
+      [[ $i == "$j" ]] && {
+        skip=1
+        break
+      }
     done
-    declare -p NEW_CASKS > /dev/null
+    [[ -n $skip ]] || NEW_CASKS+=("$i")
+  done
+  declare -p NEW_CASKS >/dev/null
 }
 
 function install_new_casks {
-    if [ ${#NEW_CASKS[@]} -eq 0 ]; then
-        echo "No new casks to install."
-    else
-        echo "Installing casks: ${NEW_CASKS[@]}"
-        case ${OS} in
-            macos)
-                ensure_homebrew_taps
-                brew install --casks "${NEW_CASKS[@]}"
-                ;;
-        esac
-    fi
+  if [ ${#NEW_CASKS[@]} -eq 0 ]; then
+    echo "No new casks to install."
+  else
+    echo "Installing casks: ${NEW_CASKS[@]}"
+    case ${OS} in
+    macos)
+      ensure_homebrew_taps
+      brew install --casks "${NEW_CASKS[@]}"
+      ;;
+    esac
+  fi
 }
 
 function install_go_packages {
-    echo "Installing/updating Go packages"
-    for pkg in $(cat ./go_packages.txt)
-    do
-        go install "${pkg}"
-    done
+  echo "Installing/updating Go packages"
+  for pkg in $(cat ./go_packages.txt); do
+    go install "${pkg}"
+  done
 }
 
 function install_new_packages {
-    if [ ${#NEW_PACKAGES[@]} -eq 0 ]; then
-        echo "No new packages to install."
-    else
-        echo "Installing packages: ${NEW_PACKAGES[@]}"
-        case ${OS} in
-            macos)
-                ensure_homebrew_taps
-                brew install "${NEW_PACKAGES[@]}"
-                ;;
-            arch)
-                paru -S --needed --noconfirm --asexplicit "${NEW_PACKAGES[@]}"
-                ;;
-        esac
-    fi
+  if [ ${#NEW_PACKAGES[@]} -eq 0 ]; then
+    echo "No new packages to install."
+  else
+    echo "Installing packages: ${NEW_PACKAGES[@]}"
+    case ${OS} in
+    macos)
+      ensure_homebrew_taps
+      brew install "${NEW_PACKAGES[@]}"
+      ;;
+    arch)
+      paru -S --needed --noconfirm --asexplicit "${NEW_PACKAGES[@]}"
+      ;;
+    esac
+  fi
 }
 
 function install_dotfiles {
-    if [ -d "$HOME/.dotfiles" ]; then
-        echo "$HOME/.dotfiles already exists. Skipping installation."
-    else
-        git clone "git@github.com:$DOTFILES_REPO" "$HOME/.dotfiles" &&
-        pushd "$HOME/.dotfiles" &&
-        git submodule init &&
-        git submodule update &&
-        ./install.sh
-        popd
-    fi
+  if [ -d "$HOME/.dotfiles" ]; then
+    echo "$HOME/.dotfiles already exists. Skipping installation."
+  else
+    git clone "git@github.com:$DOTFILES_REPO" "$HOME/.dotfiles" &&
+      pushd "$HOME/.dotfiles" &&
+      git submodule init &&
+      git submodule update &&
+      ./install.sh
+    popd
+  fi
 }
 
 function ensure_homebrew_taps {
-    mapfile -t tapped < <( brew tap )
-    mapfile -t desired <  <( cat ./brew_taps.txt )
-    to_tap=($(echo ${tapped[@]} ${desired[@]} | tr ' ' '\n' | sort | uniq -u ))
+  mapfile -t tapped < <(brew tap)
+  mapfile -t desired < <(cat ./brew_taps.txt)
+  to_tap=($(echo ${tapped[@]} ${desired[@]} | tr ' ' '\n' | sort | uniq -u))
 
-    for i in "${to_tap[@]}"; do
-        echo "Tapping ${i}"
-        brew tap "${i}"
-    done
+  for i in "${to_tap[@]}"; do
+    echo "Tapping ${i}"
+    brew tap "${i}"
+  done
 }
 
 function cleanup {
-    if [ "$TMP_PACKAGES_FILE" == true ]; then
-        rm -f ./"${OS}_packages.txt"
-    fi
+  if [ "$TMP_PACKAGES_FILE" == true ]; then
+    rm -f ./"${OS}_packages.txt"
+  fi
 }
 
 function synchronize_packages {
-    ensure_package_manager
-    ensure_packages_list
-    determine_new_packages
-    install_new_packages
+  ensure_package_manager
+  ensure_packages_list
+  determine_new_packages
+  install_new_packages
 
-    if [ ${OS} = 'macos' ]; then
-        determine_new_casks
-        install_new_casks
-    fi
+  if [ ${OS} = 'macos' ]; then
+    determine_new_casks
+    install_new_casks
+  fi
 
-    install_go_packages
+  install_go_packages
 }
 
 function bootstrap {
-    synchronize_packages
-    install_dotfiles
+  synchronize_packages
+  install_dotfiles
 }
 
 if [ -z "${BASH_SOURCE-}" ]; then # Script being run piped from curl into bash
-    bootstrap
-    cleanup
+  bootstrap
+  cleanup
 elif [ "$0" = "$BASH_SOURCE" ]; then # Script being run by calling it
-    bootstrap
+  bootstrap
 fi # If not either of above cases, script is being sourced, nothing to do
