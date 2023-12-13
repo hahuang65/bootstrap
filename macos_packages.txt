@@ -24,6 +24,7 @@ glow
 gnu-sed
 goreleaser
 grex
+hashicorp/tap/packer
 httpie
 hub
 hwatch
