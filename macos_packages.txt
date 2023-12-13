@@ -41,7 +41,6 @@ mpv
 neofetch
 neovide
 neovim
-packer
 pastel
 pgcli
 pick
