@@ -8,6 +8,7 @@ docker
 ferdium
 firefox
 google-chrome
+heynote
 keybase
 mullvadvpn
 obsidian
