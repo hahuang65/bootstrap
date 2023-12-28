@@ -38,6 +38,7 @@ goobook
 google-chrome
 grex
 grim
+heynote-bin
 htop
 httpie
 hwatch
