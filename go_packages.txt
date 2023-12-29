@@ -1,5 +1,6 @@
 github.com/charmbracelet/gum@latest
 github.com/charmbracelet/vhs@latest
+github.com/evilmartians/lefthook@latest
 github.com/go-delve/delve/cmd/dlv@latest
 github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 github.com/magefile/mage@latest
