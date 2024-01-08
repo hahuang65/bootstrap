@@ -8,6 +8,7 @@ bat
 blueutil
 bottom
 cookiecutter
+csvlens
 curlie
 direnv
 dog
