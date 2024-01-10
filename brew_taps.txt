@@ -3,5 +3,6 @@ hashicorp/tap
 homebrew/cask-versions
 homebrew/services
 koekeishiya/formulae
+localstack/tap
 snyk/tap
 wez/wezterm
