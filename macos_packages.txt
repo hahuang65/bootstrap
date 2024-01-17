@@ -53,6 +53,7 @@ pre-commit
 prettyping
 procs
 ripgrep
+senpai
 snyk/tap/snyk
 syncthing
 tailspin
