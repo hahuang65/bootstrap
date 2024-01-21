@@ -3,7 +3,6 @@
 aerc
 arc-gtk-theme
 arc-icon-theme
-asdf-vm
 aws-cli
 bandwhich
 bash-completion
