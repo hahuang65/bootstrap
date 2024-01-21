@@ -55,6 +55,7 @@ keychain
 mako
 man-db
 miller
+mise
 mpv
 mullvad-vpn
 ncspot
