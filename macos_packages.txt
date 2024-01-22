@@ -38,6 +38,7 @@ koekeishiya/formulae/yabai
 lazydocker
 lf
 localstack/tap/localstack-cli
+mise
 moreutils
 mpv
 neofetch
