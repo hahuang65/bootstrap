@@ -13,7 +13,6 @@ keybase
 mullvadvpn
 obsidian
 plex
-session-manager-plugin
 slack
 spotify
 tableplus
