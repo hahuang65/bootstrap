@@ -12,9 +12,7 @@ heynote
 keybase
 mullvadvpn
 obsidian
-onyx
 plex
-recipeui
 session-manager-plugin
 slack
 spotify
