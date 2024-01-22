@@ -137,13 +137,6 @@ function install_new_casks {
   fi
 }
 
-function install_go_packages {
-  echo "Installing/updating Go packages"
-  for pkg in $(cat ./go_packages.txt); do
-    go install "${pkg}"
-  done
-}
-
 function install_new_packages {
   if [ ${#NEW_PACKAGES[@]} -eq 0 ]; then
     echo "No new packages to install."
@@ -201,8 +194,6 @@ function synchronize_packages {
     determine_new_casks
     install_new_casks
   fi
-
-  install_go_packages
 }
 
 function bootstrap {
