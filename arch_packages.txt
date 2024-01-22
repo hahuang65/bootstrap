@@ -3,7 +3,6 @@
 aerc
 arc-gtk-theme
 arc-icon-theme
-aws-cli
 bandwhich
 bash-completion
 bashtop
