@@ -1,6 +1,5 @@
 aerc
 amazon-ecs-cli
-asdf
 bandwhich
 bash
 bash-completion@2
