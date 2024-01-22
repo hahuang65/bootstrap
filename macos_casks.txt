@@ -12,6 +12,7 @@ heynote
 keybase
 mullvadvpn
 obsidian
+onyx
 plex
 slack
 spotify
