@@ -96,6 +96,7 @@ syncthing
 tailspin
 thunar
 thunar-archive-plugin
+tree
 ttf-font-awesome
 ttf-font-awesome-4
 unzip
