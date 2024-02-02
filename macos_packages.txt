@@ -57,6 +57,7 @@ senpai
 snyk/tap/snyk
 syncthing
 tailspin
+textql
 tree
 w3m
 walk
