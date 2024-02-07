@@ -61,7 +61,6 @@ tree
 w3m
 walk
 watch
-weechat
 wget
 xsv
 yank
