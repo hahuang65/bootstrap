@@ -48,7 +48,6 @@ insomnia-bin
 iwd
 jq
 kanshi
-keybase
 keychain
 mako
 man-db
@@ -107,7 +106,6 @@ vim
 w3m
 walk
 waybar
-weechat
 wezterm-git
 wget
 wireplumber
