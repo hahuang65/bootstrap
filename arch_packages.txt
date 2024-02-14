@@ -112,6 +112,7 @@ wireplumber
 wl-clipboard
 xdg-user-dirs
 xorg-xwayland
+xsv
 yank
 zathura
 zathura-pdf-mupdf
