@@ -103,6 +103,7 @@ urlscan
 usbutils
 vi
 vim
+vivaldi
 w3m
 walk
 waybar
