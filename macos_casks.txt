@@ -19,5 +19,6 @@ tableplus
 transmit
 ubersicht
 viscosity
+vivaldi
 wezterm-nightly
 zoom
