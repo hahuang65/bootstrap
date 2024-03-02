@@ -104,6 +104,8 @@ usbutils
 vi
 vim
 vivaldi
+vivaldi-ffmpeg-codecs
+vivaldi-update-ffmpeg-hook
 w3m
 walk
 waybar
