@@ -55,7 +55,6 @@ procs
 ripgrep
 senpai
 snyk/tap/snyk
-syncthing
 tailspin
 tree
 w3m
