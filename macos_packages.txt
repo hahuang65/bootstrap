@@ -39,6 +39,7 @@ lazydocker
 lf
 localstack/tap/localstack-cli
 mise
+mongodb-database-tools
 moreutils
 mpv
 neofetch
