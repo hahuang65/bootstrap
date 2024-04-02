@@ -4,4 +4,5 @@ homebrew/cask-versions
 homebrew/services
 koekeishiya/formulae
 localstack/tap
+mongodb/brew
 snyk/tap
