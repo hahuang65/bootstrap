@@ -26,7 +26,6 @@ file-roller
 firefox
 flyctl-bin
 foot
-fswatch
 fuzzel
 fx
 fzf
