@@ -96,6 +96,7 @@ tailspin
 thunar
 thunar-archive-plugin
 tree
+tree-sitter-cli
 ttf-font-awesome
 ttf-font-awesome-4
 unzip
