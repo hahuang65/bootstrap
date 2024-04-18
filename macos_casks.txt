@@ -12,6 +12,7 @@ heynote
 mullvadvpn
 obsidian
 plex
+session-manager-plugin
 slack
 spotify
 superlist
