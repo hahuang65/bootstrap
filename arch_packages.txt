@@ -94,7 +94,6 @@ swayidle
 swaylock-effects-git
 syncthing
 tailspin
-termscp
 thunar
 thunar-archive-plugin
 tree
