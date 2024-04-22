@@ -45,6 +45,7 @@ mpv
 neofetch
 neovide
 neovim
+noborus/tap/ov
 pastel
 pgcli
 pick
