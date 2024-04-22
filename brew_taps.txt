@@ -5,4 +5,5 @@ homebrew/services
 koekeishiya/formulae
 localstack/tap
 mongodb/brew
+noborus/tap
 snyk/tap
