@@ -34,7 +34,6 @@ git
 git-delta
 github-cli
 glow
-goobook
 google-chrome
 grex
 grim
