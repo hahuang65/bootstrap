@@ -19,7 +19,6 @@ docker
 docker-compose
 dog
 downgrade
-erdtree
 expac
 fd
 ferdium-bin
