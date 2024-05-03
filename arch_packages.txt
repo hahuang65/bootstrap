@@ -24,7 +24,6 @@ expac
 fd
 ferdium-bin
 file-roller
-firefox
 flyctl-bin
 foot
 fuzzel
@@ -34,10 +33,8 @@ git
 git-delta
 github-cli
 glow
-google-chrome
 grex
 grim
-heynote-bin
 htop
 httpie
 hwatch
@@ -90,7 +87,6 @@ swaybg
 swayidle
 swaylock-effects-git
 syncthing
-tailspin
 termscp-bin
 thunar
 thunar-archive-plugin
