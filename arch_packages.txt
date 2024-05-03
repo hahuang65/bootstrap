@@ -60,7 +60,6 @@ ncspot
 neofetch
 neovide
 neovim-nightly
-ngrok
 noto-fonts-emoji
 noto-fonts-sc
 ntp
