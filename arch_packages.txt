@@ -55,7 +55,6 @@ man-db
 miller
 mise
 mpv
-mullvad-vpn
 ncspot
 neofetch
 neovide
