@@ -42,6 +42,7 @@ mise
 mongodb-database-tools
 moreutils
 mpv
+ncspot
 neofetch
 neovide
 neovim
