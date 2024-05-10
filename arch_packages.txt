@@ -69,6 +69,7 @@ pipewire-alsa
 pipewire-pulse
 playerctl
 polkit-kde-agent
+portal-bin
 powertop
 prettyping
 procs
