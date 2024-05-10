@@ -51,6 +51,7 @@ pastel
 pgcli
 pick
 poppler
+portal
 postgresql@14
 pre-commit
 prettyping
