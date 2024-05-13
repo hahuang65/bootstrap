@@ -60,6 +60,7 @@ ripgrep
 senpai
 snyk/tap/snyk
 tailspin
+tokei
 tree
 w3m
 walk
