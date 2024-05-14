@@ -1,4 +1,5 @@
 aws/tap
+charmbracelet/tap
 hashicorp/tap
 homebrew/cask-versions
 homebrew/services
