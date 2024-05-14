@@ -3,6 +3,7 @@
 aerc
 arc-gtk-theme
 arc-icon-theme
+atac
 aws-session-manager-plugin
 bandwhich
 bash-completion
