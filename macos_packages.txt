@@ -59,6 +59,7 @@ procs
 ripgrep
 senpai
 snyk/tap/snyk
+soft-serve
 tailspin
 tokei
 tree
