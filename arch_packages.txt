@@ -13,7 +13,6 @@ blueberry
 bluez
 bluez-utils
 brightnessctl
-cmake
 csvlens
 direnv
 docker
