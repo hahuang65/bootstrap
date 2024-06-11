@@ -10,6 +10,7 @@ cookiecutter
 coreutils
 csvlens
 curlie
+dblab
 direnv
 dog
 editorconfig
