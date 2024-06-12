@@ -14,6 +14,7 @@ bluez
 bluez-utils
 brightnessctl
 csvlens
+darkman
 direnv
 docker
 docker-compose
