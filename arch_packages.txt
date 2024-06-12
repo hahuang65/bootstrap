@@ -103,6 +103,7 @@ vim
 vivaldi
 vivaldi-ffmpeg-codecs
 vivaldi-update-ffmpeg-hook
+vivaldi-widevine
 w3m
 walk
 waybar
