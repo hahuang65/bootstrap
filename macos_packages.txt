@@ -39,6 +39,7 @@ koekeishiya/formulae/skhd
 koekeishiya/formulae/yabai
 lazydocker
 lf
+lnav
 localstack/tap/localstack-cli
 mise
 mongodb-database-tools
