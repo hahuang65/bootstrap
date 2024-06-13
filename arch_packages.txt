@@ -46,6 +46,7 @@ iwd
 jq
 kanshi
 keychain
+lnav
 mako
 man-db
 miller
