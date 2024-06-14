@@ -35,6 +35,7 @@ github-cli
 glow
 grex
 grim
+halloy
 htop
 httpie
 hwatch
