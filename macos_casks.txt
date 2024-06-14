@@ -7,15 +7,11 @@ docker
 ferdium
 firefox
 google-chrome
-heynote
-lm-studio
-mullvadvpn
 obsidian
 plex
 session-manager-plugin
 slack
 spotify
-superlist
 tableplus
 transmit
 ubersicht
