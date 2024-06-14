@@ -1,7 +1,6 @@
 1password
 1password-cli
 bartender
-caffeine
 cleanmymac
 dash
 docker
