@@ -16,7 +16,6 @@ slack
 spotify
 tableplus
 transmit
-ubersicht
 viscosity
 vivaldi
 wezterm-nightly
