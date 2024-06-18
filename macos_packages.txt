@@ -1,5 +1,5 @@
 aerc
-aerospace
+nikitabobko/tap/aerospace
 amazon-ecs-cli
 bandwhich
 bash
