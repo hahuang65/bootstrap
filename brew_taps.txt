@@ -1,3 +1,4 @@
+FelixKratz/formulae
 aws/tap
 charmbracelet/tap
 danvergara/tools
