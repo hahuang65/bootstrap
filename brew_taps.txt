@@ -6,5 +6,6 @@ homebrew/cask-versions
 homebrew/services
 localstack/tap
 mongodb/brew
+nikitabobko/tap
 noborus/tap
 snyk/tap
