@@ -1,4 +1,4 @@
-FelixKratz/formulae/borders
+borders
 aerc
 amazon-ecs-cli
 bandwhich
@@ -27,7 +27,7 @@ glow
 gnu-sed
 goreleaser
 grex
-hashicorp/tap/packer
+packer
 httpie
 hub
 hwatch
@@ -39,7 +39,7 @@ jq
 lazydocker
 lf
 lnav
-localstack/tap/localstack-cli
+localstack-cli
 mise
 mongodb-database-tools
 moreutils
@@ -48,7 +48,6 @@ ncspot
 neofetch
 neovide
 neovim
-nikitabobko/tap/aerospace
 ov
 pastel
 pgcli
@@ -61,7 +60,7 @@ prettyping
 procs
 ripgrep
 senpai
-snyk/tap/snyk
+snyk
 soft-serve
 tailspin
 tokei
