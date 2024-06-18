@@ -36,8 +36,6 @@ ijq
 imagemagick
 isync
 jq
-koekeishiya/formulae/skhd
-koekeishiya/formulae/yabai
 lazydocker
 lf
 lnav
