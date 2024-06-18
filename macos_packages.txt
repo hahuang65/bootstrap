@@ -1,5 +1,5 @@
+FelixKratz/formulae/borders
 aerc
-nikitabobko/tap/aerospace
 amazon-ecs-cli
 bandwhich
 bash
@@ -48,6 +48,7 @@ ncspot
 neofetch
 neovide
 neovim
+nikitabobko/tap/aerospace
 ov
 pastel
 pgcli
