@@ -4,7 +4,6 @@ danvergara/tools
 hashicorp/tap
 homebrew/cask-versions
 homebrew/services
-koekeishiya/formulae
 localstack/tap
 mongodb/brew
 noborus/tap
