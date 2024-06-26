@@ -33,7 +33,6 @@ hyperfine
 ijq
 imagemagick
 jq
-lf
 lnav
 localstack-cli
 mise
