@@ -65,7 +65,6 @@ snyk
 soft-serve
 tailspin
 tokei
-tree
 w3m
 walk
 watch
