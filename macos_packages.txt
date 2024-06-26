@@ -65,4 +65,3 @@ watch
 wget
 xsv
 yank
-zsh
