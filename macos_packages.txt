@@ -32,6 +32,7 @@ ijq
 imagemagick
 jq
 lnav
+luarocks
 mise
 mongodb-database-tools
 moreutils
