@@ -32,9 +32,7 @@ hwatch
 hyperfine
 ijq
 imagemagick
-isync
 jq
-lazydocker
 lf
 lnav
 localstack-cli
@@ -43,8 +41,6 @@ mongodb-database-tools
 moreutils
 mpv
 ncspot
-neofetch
-neovide
 neovim
 ov
 packer
