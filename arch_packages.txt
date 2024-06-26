@@ -37,7 +37,6 @@ grex
 grim
 halloy
 htop
-httpie
 hwatch
 hyperfine
 ijq
@@ -54,8 +53,6 @@ miller
 mise
 mpv
 ncspot
-neofetch
-neovide
 neovim-nightly
 noto-fonts-emoji
 noto-fonts-sc
@@ -93,7 +90,6 @@ syncthing
 termscp-bin
 thunar
 thunar-archive-plugin
-tree
 tree-sitter-cli
 ttf-font-awesome
 ttf-font-awesome-4
@@ -107,7 +103,6 @@ vivaldi-ffmpeg-codecs
 vivaldi-update-ffmpeg-hook
 vivaldi-widevine
 w3m
-walk
 waybar
 wezterm-git
 wget
