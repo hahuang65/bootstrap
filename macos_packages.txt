@@ -54,7 +54,6 @@ sketchybar
 snyk
 tokei
 w3m
-watch
 wget
 xsv
 yank
