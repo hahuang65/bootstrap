@@ -58,7 +58,6 @@ senpai
 sketchybar
 snyk
 soft-serve
-tailspin
 tokei
 w3m
 walk
