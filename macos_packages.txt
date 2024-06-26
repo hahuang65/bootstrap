@@ -10,7 +10,6 @@ cookiecutter
 coreutils
 csvlens
 curlie
-dblab
 direnv
 dog
 editorconfig
@@ -26,7 +25,6 @@ glow
 gnu-sed
 goreleaser
 grex
-httpie
 hub
 hwatch
 hyperfine
@@ -34,11 +32,9 @@ ijq
 imagemagick
 jq
 lnav
-localstack-cli
 mise
 mongodb-database-tools
 moreutils
-mpv
 ncspot
 neovim
 ov
@@ -56,7 +52,6 @@ ripgrep
 senpai
 sketchybar
 snyk
-soft-serve
 tokei
 w3m
 walk
