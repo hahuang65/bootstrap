@@ -6,7 +6,6 @@ bash-completion@2
 bat
 blueutil
 borders
-bottom
 cookiecutter
 coreutils
 csvlens
