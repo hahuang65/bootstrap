@@ -41,7 +41,6 @@ hwatch
 hyperfine
 ijq
 inetutils
-insomnia-bin
 iwd
 jq
 kanshi
@@ -86,7 +85,6 @@ sway
 swaybg
 swayidle
 swaylock-effects-git
-syncthing
 termscp-bin
 thunar
 thunar-archive-plugin
@@ -96,7 +94,6 @@ ttf-font-awesome-4
 unzip
 urlscan
 usbutils
-vi
 vim
 vivaldi
 vivaldi-ffmpeg-codecs
