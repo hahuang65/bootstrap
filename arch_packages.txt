@@ -46,6 +46,7 @@ jq
 kanshi
 keychain
 lnav
+luarocks
 mako
 man-db
 miller
