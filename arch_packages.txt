@@ -89,6 +89,7 @@ swaylock-effects-git
 termscp-bin
 thunar
 thunar-archive-plugin
+thunar-volmon
 tree-sitter-cli
 ttf-font-awesome
 ttf-font-awesome-4
