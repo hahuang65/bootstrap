@@ -24,6 +24,7 @@ expac
 fd
 ferdium-bin
 file-roller
+firefox
 flyctl-bin
 foot
 fuzzel
@@ -89,6 +90,7 @@ swaylock-effects-git
 termscp-bin
 thunar
 thunar-archive-plugin
+thunderbird
 tree-sitter-cli
 ttf-font-awesome
 ttf-font-awesome-4
