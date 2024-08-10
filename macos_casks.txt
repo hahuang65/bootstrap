@@ -16,6 +16,7 @@ session-manager-plugin
 slack
 spotify
 tableplus
+thunderbird
 transmit
 viscosity
 vivaldi
