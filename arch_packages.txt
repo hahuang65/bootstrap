@@ -24,6 +24,7 @@ expac
 fd
 ferdium-bin
 file-roller
+firefox-nightly
 flyctl-bin
 foot
 fuzzel
