@@ -16,7 +16,6 @@ editorconfig
 erdtree
 fd
 findutils
-firefox@nightly
 fx
 fzf
 gh
