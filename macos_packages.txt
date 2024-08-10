@@ -16,6 +16,7 @@ editorconfig
 erdtree
 fd
 findutils
+firefox@nightly
 fx
 fzf
 gh
@@ -53,6 +54,7 @@ ripgrep
 senpai
 sketchybar
 snyk
+thunderbird
 tokei
 w3m
 wget
