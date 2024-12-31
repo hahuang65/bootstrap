@@ -4,6 +4,7 @@ bandwhich
 bash
 bash-completion@2
 bat
+biome
 blueutil
 borders
 cookiecutter
