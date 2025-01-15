@@ -36,7 +36,6 @@ luarocks
 mise
 mongodb-database-tools
 moreutils
-ncspot
 neovim
 ov
 packer
