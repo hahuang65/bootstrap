@@ -1,9 +1,8 @@
-felixkratz/formulae
 aws/tap
 charmbracelet/tap
 danvergara/tools
+felixkratz/formulae
 hashicorp/tap
-homebrew/cask-versions
 homebrew/services
 localstack/tap
 mongodb/brew
