@@ -1,4 +1,3 @@
-aerc
 amazon-ecs-cli
 bandwhich
 bash
