@@ -41,6 +41,7 @@ packer
 pastel
 pgcli
 pick
+podman
 poppler
 portal
 postgresql@14
