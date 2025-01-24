@@ -11,6 +11,7 @@ coreutils
 csvlens
 curlie
 direnv
+docker-compose
 editorconfig
 erdtree
 fd
