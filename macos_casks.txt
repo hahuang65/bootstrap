@@ -5,7 +5,6 @@ aerospace
 bartender
 cleanmymac
 dash
-docker
 ferdium
 firefox
 google-chrome
