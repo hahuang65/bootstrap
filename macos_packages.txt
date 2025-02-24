@@ -25,6 +25,7 @@ glow
 gnu-sed
 goreleaser
 grex
+hk
 hub
 hwatch
 hyperfine
@@ -51,9 +52,11 @@ procs
 ripgrep
 senpai
 sketchybar
+snowflake-cli
 snyk
 tokei
 w3m
 wget
 xsv
 yank
+zns
