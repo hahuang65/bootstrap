@@ -1,6 +1,6 @@
 1password
 1password-cli
-MonitorControl
+monitorcontrol
 aerospace
 bartender
 cleanmymac
@@ -8,15 +8,12 @@ dash
 ferdium
 firefox
 google-chrome
-halloy
 obsidian
 plex
 session-manager-plugin
 slack
-spotify
 tableplus
-thunderbird
 transmit
 viscosity
-wezterm-nightly
+wezterm@nightly
 zoom
