@@ -1,11 +1,3 @@
-aws/tap
-charmbracelet/tap
-danvergara/tools
 felixkratz/formulae
-hashicorp/tap
-homebrew/services
-localstack/tap
-mongodb/brew
 nikitabobko/tap
 noborus/tap
-snyk/tap

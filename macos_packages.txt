@@ -3,7 +3,6 @@ bandwhich
 bash
 bash-completion@2
 bat
-biome
 blueutil
 borders
 cookiecutter
@@ -23,7 +22,6 @@ git
 git-delta
 glow
 gnu-sed
-goreleaser
 grex
 hk
 hub
@@ -34,11 +32,9 @@ imagemagick
 jq
 lnav
 mise
-mongodb-database-tools
 moreutils
 neovim
 ov
-packer
 pastel
 pgcli
 pick
@@ -53,7 +49,6 @@ ripgrep
 senpai
 sketchybar
 snowflake-cli
-snyk
 tokei
 w3m
 wget
