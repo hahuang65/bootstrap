@@ -50,6 +50,7 @@ senpai
 sketchybar
 snowflake-cli
 tokei
+typioca
 w3m
 wget
 xsv
