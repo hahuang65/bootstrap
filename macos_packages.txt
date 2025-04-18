@@ -32,6 +32,7 @@ hyperfine
 ijq
 imagemagick
 jq
+lima
 lnav
 mise
 moreutils
