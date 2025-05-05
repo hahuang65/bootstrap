@@ -1,3 +1,0 @@
-alajmo/sake
-felixkratz/formulae
-nikitabobko/tap
