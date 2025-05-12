@@ -1,4 +1,3 @@
-tap "alajmo/sake"
 tap "felixkratz/formulae"
 tap "mongodb/brew"
 tap "nikitabobko/tap"
