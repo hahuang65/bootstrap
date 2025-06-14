@@ -55,7 +55,6 @@ brew "lnav"
 brew "mise"
 brew "moreutils"
 brew "neovim"
-brew "ollama", restart_service: :changed
 brew "openjdk"
 brew "ov"
 brew "pastel"
