@@ -1,7 +1,6 @@
 tap "felixkratz/formulae"
 tap "mongodb/brew"
 tap "nikitabobko/tap"
-tap "opencode-ai/tap"
 brew "act"
 brew "amazon-ecs-cli"
 brew "apache-spark"
