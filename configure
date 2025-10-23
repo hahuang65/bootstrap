@@ -5,6 +5,7 @@ IFS=$'\n\t'
 
 case $(uname) in
 Darwin) ;;
+Linux) ;;
 *)
   echo "Unsupported OS. Exiting..."
   return 1
@@ -13,11 +14,24 @@ esac
 
 DOTFILES_REPO="git@git.sr.ht:~hwrd/dotfiles"
 export HOMEBREW_BUNDLE_FILE="$HOME/.dotfiles/bootstrap/Brewfile"
+export PARU_FILE="$HOME/.dotfiles/bootstrap/Parufile"
+export PARU_SYSTEM_FILE="$HOME/.dotfiles/bootstrap/Parufile.system"
 
 function ensure_homebrew {
   if ! (hash brew) 2>/dev/null; then
     echo "brew not installed. Installng brew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  fi
+}
+
+function ensure_paru {
+  if ! (hash paru) 2>/dev/null; then
+    echo "paru not installed. Installng paru..."
+    git clone https://aur.archlinux.org/paru.git /tmp/paru &&
+      pushd /tmp/paru &&
+      makepkg -si &&
+      popd &&
+      rm -rf /tmp/paru
   fi
 }
 
@@ -34,10 +48,88 @@ function install_dotfiles {
   fi
 }
 
+function sync_paru {
+  if [ ! -f "$PARU_FILE" ]; then
+    echo "Parufile not found at $PARU_FILE"
+    return 1
+  fi
+
+  # Read desired packages from Parufile
+  local desired_packages=()
+  while IFS= read -r line; do
+    desired_packages+=("$line")
+  done <"${PARU_FILE}"
+
+  # Read system packages from Parufile.system if it exists
+  local system_packages=()
+  if [ -f "$PARU_SYSTEM_FILE" ]; then
+    while IFS= read -r line; do
+      system_packages+=("$line")
+    done <"$PARU_SYSTEM_FILE"
+  fi
+
+  # Get explicitly installed packages
+  local installed_explicit
+  installed_explicit=$(paru -Qqe)
+
+  # Find packages to remove (explicitly installed but not in Parufile, not in system packages, and not dependencies)
+  local packages_to_remove=()
+  while IFS= read -r pkg; do
+    # Check if package is in desired list
+    local found=false
+    for desired in "${desired_packages[@]}"; do
+      if [ "$pkg" = "$desired" ]; then
+        found=true
+        break
+      fi
+    done
+
+    # Check if package is in system packages list
+    if [ "$found" = false ]; then
+      for system_pkg in "${system_packages[@]}"; do
+        if [ "$pkg" = "$system_pkg" ]; then
+          found=true
+          break
+        fi
+      done
+    fi
+
+    if [ "$found" = false ]; then
+      packages_to_remove+=("$pkg")
+    fi
+  done <<<"$installed_explicit"
+
+  # Remove orphaned packages
+  if [ ${#packages_to_remove[@]} -gt 0 ]; then
+    paru -Rns --noconfirm "${packages_to_remove[@]}" || echo "Some packages could not be removed (may be dependencies)"
+  fi
+
+  # Clean up orphaned dependencies
+  paru -Qdtq | paru -Rns --noconfirm - 2>/dev/null || echo "No orphaned dependencies to remove"
+
+  # Update package database
+  paru -Sy
+
+  # Install/update packages from Parufile
+  if [ ${#desired_packages[@]} -gt 0 ]; then
+    # Use --needed to skip up-to-date packages
+    paru -S --needed --noconfirm "${desired_packages[@]}" 2>&1 | grep -v "is up to date -- skipping"
+  fi
+}
+
 function sync {
   sudo --validate
-  ensure_homebrew
-  brew bundle check || brew bundle install && brew bundle cleanup --force && brew bundle dump --force
+
+  case $(uname) in
+  Darwin)
+    ensure_homebrew
+    brew bundle check || brew bundle install && brew bundle cleanup --force && brew bundle dump --force
+    ;;
+  Linux)
+    ensure_paru
+    sync_paru
+    ;;
+  esac
 }
 
 function bootstrap {
@@ -45,6 +137,6 @@ function bootstrap {
   install_dotfiles
 }
 
-if [ "$0" = "$BASH_SOURCE" ]; then # Script being run by calling it
+if [ "$0" = "${BASH_SOURCE[0]}" ]; then # Script being run by calling it
   bootstrap
 fi # If not called explicitly then script is being sourced, nothing to do
