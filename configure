@@ -11,12 +11,12 @@ Darwin) ;;
   ;;
 esac
 
-DOTFILES_REPO="hahuang65/dotfiles"
+DOTFILES_REPO="git@git.sr.ht:~hwrd/dotfiles"
 export HOMEBREW_BUNDLE_FILE="$HOME/.dotfiles/bootstrap/Brewfile"
 
 function ensure_homebrew {
   if ! (hash brew) 2>/dev/null; then
-    echo "brew not installed. Installing brew..."
+    echo "brew not installed. Installng brew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
 }
@@ -25,7 +25,7 @@ function install_dotfiles {
   if [ -d "$HOME/.dotfiles" ]; then
     echo "$HOME/.dotfiles already exists. Skipping installation."
   else
-    git clone "git@github.com:$DOTFILES_REPO" "$HOME/.dotfiles" &&
+    git clone "$DOTFILES_REPO" "$HOME/.dotfiles" &&
       pushd "$HOME/.dotfiles" &&
       git submodule init &&
       git submodule update &&
