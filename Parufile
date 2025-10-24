@@ -19,8 +19,8 @@ less
 ly
 mise
 neovim
-plex-desktop
 plexamp-appimage
+plex-desktop
 podman
 pv
 ripgrep
@@ -30,6 +30,7 @@ slack-desktop
 steam
 sway
 thunderbird
+tree-sitter-cli
 waybar
 wezterm
 wget
