@@ -85,8 +85,10 @@ iptables-nft
 iputils
 iwd
 jfsutils
+lib32-clang
 lib32-mesa
 lib32-opencl-mesa
+lib32-spirv-llvm-translator
 lib32-vulkan-radeon
 libdvdcss
 libgsf
@@ -163,6 +165,7 @@ s-nail
 sg3_utils
 smartmontools
 sof-firmware
+spirv-llvm-translator
 splix
 sudo
 sysfsutils
