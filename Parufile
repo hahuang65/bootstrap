@@ -18,6 +18,7 @@ glances
 less
 ly
 mise
+mpv
 neovim
 plexamp-appimage
 plex-desktop
@@ -36,3 +37,4 @@ wezterm
 wget
 wmenu
 wofi
+yt-dlp
