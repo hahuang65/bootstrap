@@ -40,4 +40,5 @@ wezterm
 wget
 wmenu
 wofi
+xdg-user-dirs
 yt-dlp
