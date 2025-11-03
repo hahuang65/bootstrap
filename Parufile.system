@@ -75,6 +75,7 @@ gst-plugins-bad
 gst-plugins-ugly
 guile
 gutenprint
+gvfs
 haveged
 hdparm
 hplip

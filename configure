@@ -107,8 +107,8 @@ function sync_paru {
   # Clean up orphaned dependencies
   paru -Qdtq | paru -Rns --noconfirm - 2>/dev/null || echo "No orphaned dependencies to remove"
 
-  # Update package database
-  paru -Sy
+  # Update package database and update existing packages
+  paru -Syu
 
   # Install/update packages from Parufile
   if [ ${#desired_packages[@]} -gt 0 ]; then
