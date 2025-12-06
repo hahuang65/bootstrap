@@ -18,6 +18,7 @@ fzf
 git
 git-delta
 glances
+gnome-keyring
 httpie
 less
 ly
@@ -31,6 +32,7 @@ plexamp-appimage
 plex-desktop
 podman
 podman-docker
+proton-vpn-gtk-app
 pv
 ripgrep
 rsync
