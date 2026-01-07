@@ -57,7 +57,17 @@ function sync_paru {
   # Read desired packages from Parufile
   local desired_packages=()
   while IFS= read -r line; do
-    desired_packages+=("$line")
+    desired_packages+=("$line")  # Keep the group/package name
+
+    # Check if this is an installed package group
+    if paru -Qg "$line" &>/dev/null; then
+      # Parse group members: "groupname packagename" format
+      while IFS= read -r group_line; do
+        # Extract just the package name (second column)
+        pkg=$(echo "$group_line" | awk '{print $2}')
+        desired_packages+=("$pkg")
+      done < <(paru -Qg "$line")
+    fi
   done <"${PARU_FILE}"
 
   # Read system packages from Parufile.system if it exists
