@@ -1,6 +1,7 @@
 tap "acsandmann/tap"
 tap "charmbracelet/tap"
 tap "clawscli/tap"
+tap "deskflow/tap"
 tap "felixkratz/formulae"
 tap "mongodb/brew"
 tap "nikitabobko/tap"
