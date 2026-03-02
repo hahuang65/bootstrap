@@ -57,7 +57,7 @@ function sync_paru {
   # Read desired packages from Parufile
   local desired_packages=()
   while IFS= read -r line; do
-    desired_packages+=("$line")  # Keep the group/package name
+    desired_packages+=("$line") # Keep the group/package name
 
     # Check if this is an installed package group
     if paru -Qg "$line" &>/dev/null; then
@@ -133,7 +133,7 @@ function sync {
   case $(uname) in
   Darwin)
     ensure_homebrew
-    brew bundle check || brew bundle install && brew bundle cleanup --force && brew bundle dump --force
+    brew bundle check || brew bundle install --greedy && brew bundle cleanup --force && brew bundle dump --force
     ;;
   Linux)
     ensure_paru
