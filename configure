@@ -133,7 +133,7 @@ function sync {
   case $(uname) in
   Darwin)
     ensure_homebrew
-    brew bundle check || brew bundle install --greedy && brew bundle cleanup --force && brew bundle dump --force
+    brew bundle check || brew bundle install && brew bundle cleanup --force && brew bundle dump --force
     ;;
   Linux)
     ensure_paru
