@@ -18,6 +18,9 @@ flyctl-bin
 foot
 fuzzel
 fzf
+ghostty
+ghostty-shell-integration
+ghostty-terminfo
 git
 git-delta
 glances
