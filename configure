@@ -132,7 +132,7 @@ function sync {
     ensure_homebrew
     brew bundle install
     brew bundle cleanup --force
-    brew bundle dump --force
+    brew bundle dump --force --no-go
     ;;
   Linux)
     ensure_paru
