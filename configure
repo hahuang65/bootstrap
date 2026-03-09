@@ -57,13 +57,12 @@ function sync_paru {
   # Read desired packages from Parufile
   local desired_packages=()
   while IFS= read -r line; do
-    desired_packages+=("$line") # Keep the group/package name
+    [[ -z "$line" || "$line" =~ ^# ]] && continue
+    desired_packages+=("$line")
 
-    # Check if this is an installed package group
+    # Expand package groups to their members
     if paru -Qg "$line" &>/dev/null; then
-      # Parse group members: "groupname packagename" format
       while IFS= read -r group_line; do
-        # Extract just the package name (second column)
         pkg=$(echo "$group_line" | awk '{print $2}')
         desired_packages+=("$pkg")
       done < <(paru -Qg "$line")
@@ -74,57 +73,55 @@ function sync_paru {
   local system_packages=()
   if [ -f "$PARU_SYSTEM_FILE" ]; then
     while IFS= read -r line; do
+      [[ -z "$line" || "$line" =~ ^# ]] && continue
       system_packages+=("$line")
     done <"$PARU_SYSTEM_FILE"
   fi
 
-  # Get explicitly installed packages
+  # Step 1: Refresh package databases (no upgrades yet)
+  echo "Refreshing package databases..."
+  paru -Sy
+
+  # Step 2: Install new packages from Parufile
+  if [ ${#desired_packages[@]} -gt 0 ]; then
+    echo "Installing new packages..."
+    paru -S --needed "${desired_packages[@]}"
+  fi
+
+  # Step 3: Remove packages not in Parufile or Parufile.system
+  local all_desired=("${desired_packages[@]}" "${system_packages[@]}")
   local installed_explicit
   installed_explicit=$(paru -Qqe)
 
-  # Find packages to remove (explicitly installed but not in Parufile, not in system packages, and not dependencies)
   local packages_to_remove=()
   while IFS= read -r pkg; do
-    # Check if package is in desired list
     local found=false
-    for desired in "${desired_packages[@]}"; do
+    for desired in "${all_desired[@]}"; do
       if [ "$pkg" = "$desired" ]; then
         found=true
         break
       fi
     done
-
-    # Check if package is in system packages list
-    if [ "$found" = false ]; then
-      for system_pkg in "${system_packages[@]}"; do
-        if [ "$pkg" = "$system_pkg" ]; then
-          found=true
-          break
-        fi
-      done
-    fi
-
     if [ "$found" = false ]; then
       packages_to_remove+=("$pkg")
     fi
   done <<<"$installed_explicit"
 
-  # Remove orphaned packages
   if [ ${#packages_to_remove[@]} -gt 0 ]; then
+    echo "Removing packages not in Parufile or Parufile.system..."
     paru -Rns --noconfirm "${packages_to_remove[@]}" || echo "Some packages could not be removed (may be dependencies)"
   fi
 
   # Clean up orphaned dependencies
-  paru -Qdtq | paru -Rns --noconfirm - 2>/dev/null || echo "No orphaned dependencies to remove"
-
-  # Update package database and update existing packages
-  paru -Syu
-
-  # Install/update packages from Parufile
-  if [ ${#desired_packages[@]} -gt 0 ]; then
-    # Use --needed to skip up-to-date packages
-    paru -S --needed --noconfirm "${desired_packages[@]}" 2>&1 | grep -v "is up to date -- skipping"
+  local orphans
+  orphans=$(paru -Qdtq 2>/dev/null) || true
+  if [ -n "$orphans" ]; then
+    echo "$orphans" | paru -Rns --noconfirm - || echo "No orphaned dependencies to remove"
   fi
+
+  # Step 4: Update all outdated packages
+  echo "Updating outdated packages..."
+  paru -Su
 }
 
 function sync {
@@ -133,7 +130,9 @@ function sync {
   case $(uname) in
   Darwin)
     ensure_homebrew
-    brew bundle check || brew bundle install && brew bundle cleanup --force && brew bundle dump --force
+    brew bundle install
+    brew bundle cleanup --force
+    brew bundle dump --force
     ;;
   Linux)
     ensure_paru

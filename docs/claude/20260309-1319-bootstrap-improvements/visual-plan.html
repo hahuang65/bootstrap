@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Implementation Plan — Bootstrap Improvements</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --font-body: 'Crimson Pro', Georgia, serif;
+    --font-mono: 'Noto Sans Mono', 'SF Mono', Consolas, monospace;
+    --bg: #f6f4f0;
+    --surface: #ffffff;
+    --surface2: #edeae4;
+    --surface-elevated: #fffefa;
+    --border: rgba(0,0,0,0.07);
+    --border-bright: rgba(0,0,0,0.14);
+    --text: #1f1b16;
+    --text-dim: #7a7265;
+    --gold: #b45309;
+    --gold-dim: rgba(180,83,9,0.07);
+    --sage: #3f6212;
+    --sage-dim: rgba(63,98,18,0.07);
+    --rose: #be123c;
+    --rose-dim: rgba(190,18,60,0.07);
+    --blue: #1e40af;
+    --blue-dim: rgba(30,64,175,0.07);
+    --teal: #0f766e;
+    --teal-dim: rgba(15,118,110,0.07);
+    --plum: #7e22ce;
+    --plum-dim: rgba(126,34,206,0.07);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1816;
+      --surface: #24211e;
+      --surface2: #2e2a26;
+      --surface-elevated: #332f2a;
+      --border: rgba(255,255,255,0.06);
+      --border-bright: rgba(255,255,255,0.12);
+      --text: #e8e2d8;
+      --text-dim: #a89e90;
+      --gold: #fbbf24;
+      --gold-dim: rgba(251,191,36,0.1);
+      --sage: #a3e635;
+      --sage-dim: rgba(163,230,53,0.08);
+      --rose: #fda4af;
+      --rose-dim: rgba(253,164,175,0.08);
+      --blue: #93c5fd;
+      --blue-dim: rgba(147,197,253,0.08);
+      --teal: #5eead4;
+      --teal-dim: rgba(94,234,212,0.08);
+      --plum: #d8b4fe;
+      --plum-dim: rgba(216,180,254,0.08);
+    }
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--bg);
+    background-image:
+      radial-gradient(ellipse at 25% 0%, var(--gold-dim) 0%, transparent 50%),
+      radial-gradient(ellipse at 75% 100%, var(--sage-dim) 0%, transparent 40%);
+    color: var(--text); font-family: var(--font-body); padding: 48px 40px; min-height: 100vh;
+  }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+  .anim { animation: fadeUp 0.4s ease-out both; animation-delay: calc(var(--i,0)*0.05s); }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration:0.01ms!important; animation-delay:0ms!important; } }
+
+  .page { max-width: 1100px; margin: 0 auto; }
+
+  /* Header */
+  .header-label { font-family:var(--font-mono); font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:2px; color:var(--gold); margin-bottom:8px; }
+  h1 { font-size:42px; font-weight:700; letter-spacing:-1.5px; line-height:1.1; font-style:italic; margin-bottom:8px; }
+  .subtitle { color:var(--text-dim); font-size:18px; margin-bottom:10px; }
+  .scope { font-family:var(--font-mono); font-size:12px; color:var(--text-dim); margin-bottom:48px; padding:10px 14px; background:var(--surface2); border-radius:6px; display:inline-block; }
+
+  /* Section titles */
+  h2 { font-size:26px; font-weight:700; letter-spacing:-0.5px; margin:48px 0 6px 0; }
+  h2 .num { font-family:var(--font-mono); font-size:14px; font-weight:600; color:var(--gold); margin-right:8px; }
+  .section-desc { color:var(--text-dim); font-size:15px; margin-bottom:20px; }
+
+  /* Cards */
+  .card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:20px 24px; }
+  .card--elevated { background:var(--surface-elevated); box-shadow:0 4px 20px rgba(0,0,0,0.06); }
+  .card--recessed { background:var(--surface2); box-shadow:inset 0 1px 3px rgba(0,0,0,0.04); }
+  .card-label { font-family:var(--font-mono); font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+  .dot { width:8px; height:8px; border-radius:50%; display:inline-block; }
+
+  /* Two-col */
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .three-col { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
+
+  /* Before/After headers */
+  .ba-header { font-family:var(--font-mono); font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; padding:6px 12px; border-radius:6px 6px 0 0; display:inline-block; margin-bottom:-1px; position:relative; z-index:1; }
+  .ba-header--before { background:var(--rose-dim); color:var(--rose); }
+  .ba-header--after { background:var(--sage-dim); color:var(--sage); }
+
+  /* Flow steps */
+  .flow { display:flex; flex-direction:column; gap:0; }
+  .flow-step { padding:8px 12px; font-size:14px; line-height:1.5; border-left:2px solid var(--border-bright); margin-left:8px; position:relative; }
+  .flow-step::before { content:''; position:absolute; left:-5px; top:12px; width:8px; height:8px; border-radius:50%; }
+  .flow-step--rose::before { background:var(--rose); }
+  .flow-step--sage::before { background:var(--sage); }
+  .flow-step--gold::before { background:var(--gold); }
+  .flow-step--blue::before { background:var(--blue); }
+  .flow-step--teal::before { background:var(--teal); }
+  .flow-step--warn { background:var(--rose-dim); border-radius:4px; margin:2px 0; }
+  .flow-step--good { background:var(--sage-dim); border-radius:4px; margin:2px 0; }
+  .flow-step .step-label { font-family:var(--font-mono); font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:1px; margin-bottom:2px; }
+
+  /* Code */
+  pre { font-family:var(--font-mono); font-size:12px; line-height:1.6; background:var(--surface2); border:1px solid var(--border); border-radius:8px; padding:14px 16px; overflow-x:auto; white-space:pre-wrap; word-break:break-word; }
+  .file-path { font-family:var(--font-mono); font-size:11px; color:var(--text-dim); margin-bottom:6px; }
+  code { font-family:var(--font-mono); font-size:12px; background:var(--gold-dim); color:var(--gold); padding:1px 5px; border-radius:3px; }
+  .code-del { color:var(--rose); text-decoration:line-through; opacity:0.7; }
+  .code-add { color:var(--sage); font-weight:500; }
+
+  /* Tables */
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th { font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:1px; color:var(--text-dim); text-align:left; padding:8px 10px; border-bottom:2px solid var(--border-bright); }
+  td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+  tr:last-child td { border-bottom:none; }
+  .td-mono { font-family:var(--font-mono); font-size:12px; }
+
+  /* Callout */
+  .callout { border:1px solid var(--border); border-radius:0 8px 8px 0; padding:14px 18px; font-size:14px; line-height:1.6; color:var(--text-dim); margin-top:16px; }
+  .callout strong { color:var(--text); }
+  .callout--gold { border-left:3px solid var(--gold); background:var(--gold-dim); }
+  .callout--rose { border-left:3px solid var(--rose); background:var(--rose-dim); }
+  .callout--sage { border-left:3px solid var(--sage); background:var(--sage-dim); }
+
+  /* Pipeline */
+  .pipeline { display:flex; gap:0; align-items:stretch; overflow-x:auto; padding:4px 0; }
+  .pip-step { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px 14px; min-width:130px; flex-shrink:0; text-align:center; }
+  .pip-step .pip-num { font-family:var(--font-mono); font-size:10px; font-weight:600; margin-bottom:4px; }
+  .pip-step .pip-name { font-size:14px; font-weight:600; margin-bottom:3px; }
+  .pip-step .pip-detail { font-size:11px; color:var(--text-dim); line-height:1.4; font-family:var(--font-mono); }
+  .pip-arrow { display:flex; align-items:center; padding:0 4px; color:var(--border-bright); font-size:18px; flex-shrink:0; }
+  .pip--gold { border-color:var(--gold-dim); }
+  .pip--gold .pip-num { color:var(--gold); }
+  .pip--sage { border-color:var(--sage-dim); }
+  .pip--sage .pip-num { color:var(--sage); }
+  .pip--rose { border-color:var(--rose-dim); }
+  .pip--rose .pip-num { color:var(--rose); }
+  .pip--blue { border-color:var(--blue-dim); }
+  .pip--blue .pip-num { color:var(--blue); }
+  .pip--teal { border-color:var(--teal-dim); }
+  .pip--teal .pip-num { color:var(--teal); }
+  .pip--plum { border-color:var(--plum-dim); }
+  .pip--plum .pip-num { color:var(--plum); }
+
+  /* Checklist */
+  .check-list { list-style:none; font-size:14px; line-height:2; }
+  .check-list li { padding-left:24px; position:relative; }
+  .check-list li::before { content:'\25A1'; position:absolute; left:0; color:var(--text-dim); font-size:13px; }
+
+  .gap-sm { height:16px; }
+  .gap-md { height:24px; }
+
+  @media (max-width:768px) {
+    body { padding:20px; }
+    .two-col, .three-col { grid-template-columns:1fr; }
+    .pipeline { flex-wrap:wrap; gap:6px; }
+    .pip-arrow { display:none; }
+    h1 { font-size:30px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ==================== HEADER ==================== -->
+  <div class="anim" style="--i:0">
+    <div class="header-label">Implementation Plan</div>
+    <h1>Bootstrap Improvements</h1>
+    <p class="subtitle">Safer syncing, clearer flows, less confusion after months away</p>
+    <div class="scope">5 changes &middot; 4 files modified &middot; 0 new files &middot; 0 new dependencies</div>
+  </div>
+
+  <!-- ==================== PHASE TIMELINE ==================== -->
+  <h2 class="anim" style="--i:1"><span class="num">00</span> Implementation Phases</h2>
+  <p class="section-desc anim" style="--i:1">Five independent changes, ordered by impact</p>
+
+  <div class="card card--elevated anim" style="--i:2">
+    <div class="pipeline">
+      <div class="pip-step pip--rose">
+        <div class="pip-num">Phase 1</div>
+        <div class="pip-name">sync_paru</div>
+        <div class="pip-detail">Rewrite with<br>4-step flow</div>
+      </div>
+      <div class="pip-arrow">&rarr;</div>
+      <div class="pip-step pip--gold">
+        <div class="pip-num">Phase 2</div>
+        <div class="pip-name">brew sync</div>
+        <div class="pip-detail">Fix operator<br>precedence</div>
+      </div>
+      <div class="pip-arrow">&rarr;</div>
+      <div class="pip-step pip--sage">
+        <div class="pip-num">Phase 3</div>
+        <div class="pip-name">Deduplicate</div>
+        <div class="pip-detail">Remove 4+1 pkgs<br>Brewfile + Parufile</div>
+      </div>
+      <div class="pip-arrow">&rarr;</div>
+      <div class="pip-step pip--blue">
+        <div class="pip-num">Phase 4</div>
+        <div class="pip-name">install.sh</div>
+        <div class="pip-detail">Bash, logging,<br>error reports</div>
+      </div>
+      <div class="pip-arrow">&rarr;</div>
+      <div class="pip-step pip--plum">
+        <div class="pip-num">Phase 5</div>
+        <div class="pip-name">README</div>
+        <div class="pip-detail">Usage docs</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== CHANGE 1: sync_paru ==================== -->
+  <h2 class="anim" style="--i:3"><span class="num">01</span> sync_paru Rewrite</h2>
+  <p class="section-desc anim" style="--i:3">File: <code>bootstrap/configure</code> &mdash; lines 51-128</p>
+
+  <div class="two-col anim" style="--i:4">
+    <!-- BEFORE -->
+    <div>
+      <div class="ba-header ba-header--before">Before &mdash; Current</div>
+      <div class="card" style="border-color:var(--rose-dim)">
+        <div class="flow">
+          <div class="flow-step flow-step--rose flow-step--warn">
+            <div class="step-label" style="color:var(--rose)">Step 1 &mdash; Remove</div>
+            Diff installed vs Parufile, <strong>auto-remove</strong> with <code>--noconfirm</code>
+          </div>
+          <div class="flow-step flow-step--rose">
+            <div class="step-label" style="color:var(--rose)">Step 2 &mdash; Orphans</div>
+            Clean orphaned deps with <code>--noconfirm</code>
+          </div>
+          <div class="flow-step flow-step--gold">
+            <div class="step-label" style="color:var(--gold)">Step 3 &mdash; Update + Refresh</div>
+            <code>paru -Syu</code> &mdash; refreshes repos AND upgrades all at once
+          </div>
+          <div class="flow-step flow-step--blue">
+            <div class="step-label" style="color:var(--blue)">Step 4 &mdash; Install</div>
+            <code>paru -S --needed --noconfirm</code> &mdash; install new packages
+          </div>
+        </div>
+        <div class="callout callout--rose" style="margin-top:14px">
+          <strong>Risks:</strong> Removal happens first (before you can even see what's new). Uses <code>--noconfirm</code> on destructive operations. No blank-line/comment support in Parufile.
+        </div>
+      </div>
+    </div>
+
+    <!-- AFTER -->
+    <div>
+      <div class="ba-header ba-header--after">After &mdash; Proposed</div>
+      <div class="card" style="border-color:var(--sage-dim)">
+        <div class="flow">
+          <div class="flow-step flow-step--teal">
+            <div class="step-label" style="color:var(--teal)">Step 1 &mdash; Refresh</div>
+            <code>paru -Sy</code> &mdash; update package databases only, no upgrades
+          </div>
+          <div class="flow-step flow-step--sage flow-step--good">
+            <div class="step-label" style="color:var(--sage)">Step 2 &mdash; Install New</div>
+            <code>paru -S --needed</code> &mdash; install packages from Parufile (skip existing)
+          </div>
+          <div class="flow-step flow-step--gold">
+            <div class="step-label" style="color:var(--gold)">Step 3 &mdash; Remove Stale</div>
+            Diff installed vs Parufile+Parufile.system. Auto-remove with <code>--noconfirm</code>
+          </div>
+          <div class="flow-step flow-step--blue">
+            <div class="step-label" style="color:var(--blue)">Step 4 &mdash; Update</div>
+            <code>paru -Su</code> &mdash; upgrade all outdated packages
+          </div>
+        </div>
+        <div class="callout callout--sage" style="margin-top:14px">
+          <strong>Improvements:</strong> Repo refresh is separate from upgrades. Install happens before removal. Clear step ordering. Supports comments and blank lines.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gap-sm"></div>
+
+  <div class="card card--recessed anim" style="--i:5">
+    <div class="card-label"><span class="dot" style="background:var(--sage)"></span> <span style="color:var(--sage)">Key Code Change &mdash; Step Reordering</span></div>
+    <pre><span class="code-add">  # Step 1: Refresh package databases (no upgrades yet)</span>
+<span class="code-add">  paru -Sy</span>
+
+<span class="code-add">  # Step 2: Install new packages from Parufile</span>
+<span class="code-add">  paru -S --needed "${desired_packages[@]}"</span>
+
+  # Step 3: Remove packages not in Parufile or Parufile.system
+  if [ ${#packages_to_remove[@]} -gt 0 ]; then
+<span class="code-add">    echo "Removing packages not in Parufile or Parufile.system..."</span>
+    paru -Rns --noconfirm "${packages_to_remove[@]}"
+  fi
+
+<span class="code-add">  # Step 4: Update all outdated packages</span>
+<span class="code-add">  paru -Su</span></pre>
+  </div>
+
+  <!-- ==================== CHANGE 2: brew sync ==================== -->
+  <h2 class="anim" style="--i:6"><span class="num">02</span> Brew Sync Chain</h2>
+  <p class="section-desc anim" style="--i:6">File: <code>bootstrap/configure</code> &mdash; line 136</p>
+
+  <div class="two-col anim" style="--i:7">
+    <div>
+      <div class="ba-header ba-header--before">Before</div>
+      <div class="card" style="border-color:var(--rose-dim)">
+        <div class="file-path">bootstrap/configure:136</div>
+        <pre>brew bundle check || brew bundle install && brew bundle cleanup --force && brew bundle dump --force</pre>
+        <div class="callout callout--rose" style="margin-top:12px">
+          <strong>Operator precedence bug:</strong> <code>&&</code> binds tighter than <code>||</code>. If <code>check</code> succeeds, nothing else runs. If it fails, the entire right side executes as a chain. The <code>check</code> guard is misleading &mdash; <code>install</code> is already idempotent.
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="ba-header ba-header--after">After</div>
+      <div class="card" style="border-color:var(--sage-dim)">
+        <div class="file-path">bootstrap/configure:136-138</div>
+        <pre><span class="code-add">brew bundle install</span>
+<span class="code-add">brew bundle cleanup --force</span>
+<span class="code-add">brew bundle dump --force</span></pre>
+        <div class="callout callout--sage" style="margin-top:12px">
+          <strong>Three clear steps:</strong> Install missing &rarr; remove unlisted &rarr; regenerate Brewfile in sorted canonical format. No ambiguous operator precedence. Each step on its own line.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== CHANGE 3: Deduplication ==================== -->
+  <h2 class="anim" style="--i:8"><span class="num">03</span> Package Deduplication</h2>
+  <p class="section-desc anim" style="--i:8">Remove from Brewfile and Parufile &mdash; already managed by mise</p>
+
+  <div class="card anim" style="--i:9">
+    <div class="card-label"><span class="dot" style="background:var(--gold)"></span> <span style="color:var(--gold)">Brewfile Removals</span></div>
+    <table>
+      <thead>
+        <tr>
+          <th>Package</th>
+          <th>Remove from Brewfile</th>
+          <th>Managed by mise</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>go</strong></td>
+          <td class="td-mono"><span style="color:var(--rose)">brew "go"</span></td>
+          <td class="td-mono"><span style="color:var(--sage)">mise use -gy golang@latest</span></td>
+          <td>Runtime</td>
+        </tr>
+        <tr>
+          <td><strong>gum</strong></td>
+          <td class="td-mono"><span style="color:var(--rose)">brew "gum"</span></td>
+          <td class="td-mono"><span style="color:var(--sage)">mise use -gy gum@latest</span></td>
+          <td>Go CLI tool</td>
+        </tr>
+        <tr>
+          <td><strong>hut</strong></td>
+          <td class="td-mono"><span style="color:var(--rose)">brew "hut"</span></td>
+          <td class="td-mono"><span style="color:var(--sage)">default-go-packages</span></td>
+          <td>Go CLI tool</td>
+        </tr>
+        <tr>
+          <td><strong>pre-commit</strong></td>
+          <td class="td-mono"><span style="color:var(--rose)">brew "pre-commit"</span></td>
+          <td class="td-mono"><span style="color:var(--sage)">mise use -gy pre-commit@latest</span></td>
+          <td>Python tool</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="height:20px"></div>
+
+    <div class="card-label"><span class="dot" style="background:var(--plum)"></span> <span style="color:var(--plum)">Parufile Removals</span></div>
+    <table>
+      <thead>
+        <tr>
+          <th>Package</th>
+          <th>Remove from Parufile</th>
+          <th>Managed by mise</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>uv</strong></td>
+          <td class="td-mono"><span style="color:var(--rose)">uv</span> <span style="color:var(--text-dim)">(line 60)</span></td>
+          <td class="td-mono"><span style="color:var(--sage)">mise use -gy uv@latest</span></td>
+          <td>Python tool</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout--sage" style="margin-top:14px">
+      <strong>Parufile.system &mdash; no changes.</strong> System <code>python</code> (line 153) stays &mdash; it's a dependency for other Arch packages, separate from mise's development Python.
+    </div>
+
+    <div class="callout callout--gold" style="margin-top:10px">
+      <strong>Migration:</strong> On macOS, run <code>brew remove go gum hut pre-commit</code> to clean up Homebrew copies. On Linux, <code>uv</code> will be auto-removed by <code>sync_paru</code> on next sync (since it's no longer in the Parufile).
+    </div>
+  </div>
+
+  <!-- ==================== CHANGE 4: install.sh ==================== -->
+  <h2 class="anim" style="--i:10"><span class="num">04</span> Harden install.sh</h2>
+  <p class="section-desc anim" style="--i:10">File: <code>install.sh</code> (top-level)</p>
+
+  <div class="two-col anim" style="--i:11">
+    <div>
+      <div class="ba-header ba-header--before">Before</div>
+      <div class="card" style="border-color:var(--rose-dim)">
+        <pre><span class="code-del">#!/bin/sh</span>
+
+scripts_dir="$HOME/.scripts"
+if [ -d "$scripts_dir" ]; then
+  rm -rf "$scripts_dir"
+fi
+
+for dir in */; do
+<span class="code-del">  pushd $dir > /dev/null</span>
+<span class="code-del">  if test -e "install.sh"; then</span>
+<span class="code-del">    ./install.sh</span>
+<span class="code-del">  fi</span>
+<span class="code-del">  popd > /dev/null</span>
+done</pre>
+        <div class="callout callout--rose" style="margin-top:12px">
+          <strong>Issues:</strong> <code>#!/bin/sh</code> but uses bash-only <code>pushd/popd</code>. No <code>set -e</code>. Silent failures. No logging. Unquoted <code>$dir</code>.
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="ba-header ba-header--after">After</div>
+      <div class="card" style="border-color:var(--sage-dim)">
+        <pre><span class="code-add">#!/usr/bin/env bash</span>
+<span class="code-add">set -euo pipefail</span>
+
+scripts_dir="$HOME/.scripts"
+if [ -d "$scripts_dir" ]; then
+  rm -rf "$scripts_dir"
+fi
+
+<span class="code-add">failed=()</span>
+for dir in */; do
+<span class="code-add">  if [ -e "$dir/install.sh" ]; then</span>
+<span class="code-add">    echo "Installing $dir..."</span>
+<span class="code-add">    if ! (cd "$dir" && ./install.sh); then</span>
+<span class="code-add">      echo "  FAILED: $dir"</span>
+<span class="code-add">      failed+=("$dir")</span>
+<span class="code-add">    fi</span>
+<span class="code-add">  fi</span>
+done
+
+<span class="code-add">if [ ${#failed[@]} -gt 0 ]; then</span>
+<span class="code-add">  echo "Failed modules:"</span>
+<span class="code-add">  printf "  - %s\n" "${failed[@]}"</span>
+<span class="code-add">  exit 1</span>
+<span class="code-add">fi</span></pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="gap-sm"></div>
+
+  <div class="card card--recessed anim" style="--i:12">
+    <table>
+      <thead>
+        <tr><th>Improvement</th><th>Before</th><th>After</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Shell</td><td class="td-mono"><span style="color:var(--rose)">#!/bin/sh</span></td><td class="td-mono"><span style="color:var(--sage)">#!/usr/bin/env bash</span></td></tr>
+        <tr><td>Strict mode</td><td class="td-mono" style="color:var(--rose)">(none)</td><td class="td-mono"><span style="color:var(--sage)">set -euo pipefail</span></td></tr>
+        <tr><td>Directory change</td><td class="td-mono"><span style="color:var(--rose)">pushd/popd</span></td><td class="td-mono"><span style="color:var(--sage)">cd in subshell</span></td></tr>
+        <tr><td>Logging</td><td class="td-mono" style="color:var(--rose)">Silent</td><td class="td-mono"><span style="color:var(--sage)">Logs each module name</span></td></tr>
+        <tr><td>Error handling</td><td class="td-mono" style="color:var(--rose)">Ignored</td><td class="td-mono"><span style="color:var(--sage)">Collects + reports failures</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ==================== CHANGE 5: README ==================== -->
+  <h2 class="anim" style="--i:13"><span class="num">05</span> Documentation</h2>
+  <p class="section-desc anim" style="--i:13">File: <code>bootstrap/README.md</code></p>
+
+  <div class="card anim" style="--i:14">
+    <div class="card-label"><span class="dot" style="background:var(--plum)"></span> <span style="color:var(--plum)">New Usage Section</span></div>
+    <div class="three-col" style="gap:12px">
+      <div class="card card--recessed" style="padding:14px 16px">
+        <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:8px;font-weight:600">New Machine</div>
+        <pre style="margin:0;font-size:11px">./bootstrap/configure</pre>
+      </div>
+      <div class="card card--recessed" style="padding:14px 16px">
+        <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--sage);margin-bottom:8px;font-weight:600">Sync Existing</div>
+        <pre style="margin:0;font-size:11px">source ~/.dotfiles/bootstrap/configure && sync</pre>
+      </div>
+      <div class="card card--recessed" style="padding:14px 16px">
+        <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--blue);margin-bottom:8px;font-weight:600">Package Mgmt</div>
+        <div style="font-size:12px;line-height:1.6">
+          <strong>macOS:</strong> Edit Brewfile<br>
+          <strong>Linux:</strong> Edit Parufile<br>
+          <strong>Lang tools:</strong> mise/default-*
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== FILE REFERENCES ==================== -->
+  <h2 class="anim" style="--i:15"><span class="num">06</span> File References</h2>
+
+  <div class="card card--recessed anim" style="--i:16">
+    <table>
+      <thead>
+        <tr><th>File</th><th>Change</th><th>Phase</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="td-mono">bootstrap/configure</td><td>Rewrite <code>sync_paru</code> (lines 51-128), fix brew sync line (line 136)</td><td>1, 2</td></tr>
+        <tr><td class="td-mono">bootstrap/Brewfile</td><td>Remove 4 duplicate packages: go, gum, hut, pre-commit</td><td>3</td></tr>
+        <tr><td class="td-mono">bootstrap/Parufile</td><td>Remove 1 duplicate package: uv</td><td>3</td></tr>
+        <tr><td class="td-mono">install.sh</td><td>Full rewrite: bash shebang, strict mode, logging, failure collection</td><td>4</td></tr>
+        <tr><td class="td-mono">bootstrap/README.md</td><td>Add usage instructions for new machine, sync, and package management</td><td>5</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ==================== TESTING ==================== -->
+  <h2 class="anim" style="--i:17"><span class="num">07</span> Verification</h2>
+  <p class="section-desc anim" style="--i:17">Manual testing &mdash; no test framework</p>
+
+  <div class="card anim" style="--i:18">
+    <table>
+      <thead>
+        <tr><th>Test</th><th>Scenario</th><th>Expected Result</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="td-mono" style="white-space:nowrap">macOS sync</td><td>Source configure, run <code>sync</code></td><td>Brewfile regenerated in sorted canonical format; no operator precedence issues</td></tr>
+        <tr><td class="td-mono" style="white-space:nowrap">Linux sync</td><td>Source configure, run <code>sync_paru</code></td><td>Refreshes repos &rarr; installs new &rarr; shows removal list with y/N prompt &rarr; updates outdated</td></tr>
+        <tr><td class="td-mono" style="white-space:nowrap">install.sh logging</td><td>Run top-level <code>install.sh</code></td><td>Prints "Installing &lt;dir&gt;..." for each module</td></tr>
+        <tr><td class="td-mono" style="white-space:nowrap">install.sh failure</td><td>Break one module's install.sh, run top-level</td><td>Continues through all modules, reports "Failed modules:" list at end with exit 1</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ==================== NOTES ==================== -->
+  <h2 class="anim" style="--i:19"><span class="num">08</span> Implementation Notes</h2>
+
+  <div class="anim" style="--i:20; display:flex; flex-direction:column; gap:12px">
+    <div class="callout callout--gold">
+      <strong>Backward compatibility:</strong> All changes are backward-compatible. The <code>sync</code> and <code>bootstrap</code> function signatures are unchanged. Sourcing the configure script and calling functions works exactly as before.
+    </div>
+    <div class="callout callout--rose">
+      <strong>Migration required:</strong> On macOS, run <code>brew remove go gum hut pre-commit</code> to remove Homebrew copies (or let <code>brew bundle cleanup</code> handle it on next sync). On Linux, <code>uv</code> will be auto-removed by <code>sync_paru</code> on next sync since it's no longer in the Parufile.
+    </div>
+    <div class="callout callout--sage">
+      <strong>Design decision &mdash; mise @latest:</strong> Per-project <code>.mise.toml</code> files pin specific versions for each project. The global <code>@latest</code> provides a good system default for cross-project tools (gum, pre-commit, etc.). No change needed.
+    </div>
+  </div>
+
+  <div style="height:48px"></div>
+
+</div>
+</body>
+</html>
