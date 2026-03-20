@@ -85,7 +85,7 @@ function sync_paru {
   # Step 2: Install new packages from Parufile
   if [ ${#desired_packages[@]} -gt 0 ]; then
     echo "Installing new packages..."
-    paru -S --needed "${desired_packages[@]}" 2>&1 | grep -v "is up to date -- skipping"
+    paru -S --noconfirm --needed "${desired_packages[@]}" 2>&1 | grep -v "is up to date -- skipping"
   fi
 
   # Step 3: Remove packages not in Parufile or Parufile.system
@@ -121,7 +121,7 @@ function sync_paru {
 
   # Step 4: Update all outdated packages
   echo "Updating outdated packages..."
-  paru -Su
+  paru -Su --noconfirm
 }
 
 function sync {
