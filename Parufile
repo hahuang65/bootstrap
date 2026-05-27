@@ -9,6 +9,7 @@ btop
 claude-code
 cloudflare-speed-cli
 direnv
+duckdb
 fastfetch
 ferdium
 firefox
@@ -22,7 +23,9 @@ ghostty-shell-integration
 ghostty-terminfo
 git
 git-delta
+github-cli
 glances
+glow
 gnome-keyring
 httpie
 less
