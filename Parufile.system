@@ -82,6 +82,7 @@ hplip
 hwdetect
 hwinfo
 inetutils
+iptables
 iptables-nft
 iputils
 iwd
