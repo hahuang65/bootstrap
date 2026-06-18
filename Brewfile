@@ -183,8 +183,6 @@ brew "felixkratz/formulae/borders"
 brew "felixkratz/formulae/sketchybar"
 # High-performance, schema-free, document-oriented database
 brew "mongodb/brew/mongodb-community"
-# The AI coding agent built for the terminal.
-brew "sst/tap/opencode"
 # Comprehensive macOS cleanup and application uninstall tool
 brew "tw93/tap/mole"
 # Password manager that keeps all passwords secure behind one password
@@ -197,6 +195,8 @@ cask "nikitabobko/tap/aerospace"
 cask "betterdisplay"
 # Terminal-based AI coding assistant
 cask "claude-code"
+# OpenAI's Codex desktop app for managing coding agents
+cask "codex-app"
 # Mouse and keyboard sharing utility
 cask "deskflow/tap/deskflow"
 # App to build and share containerised applications and microservices
