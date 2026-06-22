@@ -1,5 +1,4 @@
 tap "clawscli/tap", trusted: true
-tap "deskflow/tap"
 tap "felixkratz/formulae", trusted: true
 tap "mongodb/brew", trusted: true
 tap "nikitabobko/tap", trusted: true
