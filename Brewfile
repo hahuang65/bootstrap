@@ -1,11 +1,8 @@
-tap "acsandmann/tap", trusted: true
-tap "charmbracelet/tap", trusted: true
 tap "clawscli/tap", trusted: true
-tap "deskflow/tap", trusted: true
+tap "deskflow/tap"
 tap "felixkratz/formulae", trusted: true
 tap "mongodb/brew", trusted: true
 tap "nikitabobko/tap", trusted: true
-tap "sst/tap", trusted: true
 tap "tw93/tap", trusted: true
 # Run your GitHub Actions locally
 brew "act"
