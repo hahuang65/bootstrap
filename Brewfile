@@ -245,8 +245,6 @@ cask "viscosity"
 cask "vivaldi"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm@nightly"
-# Voice-to-text dictation with AI-powered auto-editing
-cask "wispr-flow"
 # Multiplayer code editor
 cask "zed"
 # Gecko based web browser
