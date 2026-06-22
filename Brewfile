@@ -195,8 +195,6 @@ cask "claude-code"
 cask "codex"
 # OpenAI's Codex desktop app for managing coding agents
 cask "codex-app"
-# Mouse and keyboard sharing utility
-cask "deskflow/tap/deskflow"
 # App to build and share containerised applications and microservices
 cask "docker-desktop"
 # Elasticsearch GUI
