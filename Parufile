@@ -13,14 +13,10 @@ duckdb
 fastfetch
 ferdium
 firefox
-flatpak
 flyctl-bin
 foot
 fuzzel
 fzf
-ghostty
-ghostty-shell-integration
-ghostty-terminfo
 git
 git-delta
 github-cli
@@ -39,7 +35,6 @@ netpala
 network-manager-applet
 obsidian-bin
 oh-my-pi
-pacsea-bin
 pi-coding-agent
 plasma
 plexamp-appimage
@@ -62,8 +57,6 @@ syncthing
 thunderbird
 tree-sitter-cli
 uutils-coreutils
-vivaldi
-vivaldi-ffmpeg-codecs
 waybar
 wezterm-nightly-bin
 wget
