@@ -150,10 +150,6 @@ brew "tailspin"
 brew "terraform-ls"
 # Terminal multiplexer
 brew "tmux"
-# Program that allows you to count code, quickly
-brew "tokei"
-# Display directories as trees (with optional color/HTML output)
-brew "tree"
 # Parser generator tool
 brew "tree-sitter-cli"
 # Command-line tool for sharing terminal over the web
