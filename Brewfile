@@ -158,6 +158,8 @@ brew "up"
 brew "wget"
 # Why is this running?
 brew "witr"
+# Copy terminal output to clipboard
+brew "yank"
 # A window border system for macOS
 brew "felixkratz/formulae/borders"
 # Custom macOS statusbar with shell plugin, interaction and graph support
