@@ -171,8 +171,6 @@ brew "witr"
 brew "yank"
 # CLI tool for querying DNS records with readable, colored output
 brew "zns"
-# Terminal UI for AWS resource management
-brew "clawscli/tap/claws"
 # A window border system for macOS
 brew "felixkratz/formulae/borders"
 # Custom macOS statusbar with shell plugin, interaction and graph support
