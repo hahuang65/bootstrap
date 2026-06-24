@@ -152,18 +152,12 @@ brew "terraform-ls"
 brew "tmux"
 # Parser generator tool
 brew "tree-sitter-cli"
-# Command-line tool for sharing terminal over the web
-brew "ttyd"
 # Tool for writing command-line pipes with instant live preview
 brew "up"
 # Internet file retriever
 brew "wget"
 # Why is this running?
 brew "witr"
-# Copy terminal output to clipboard
-brew "yank"
-# CLI tool for querying DNS records with readable, colored output
-brew "zns"
 # A window border system for macOS
 brew "felixkratz/formulae/borders"
 # Custom macOS statusbar with shell plugin, interaction and graph support
