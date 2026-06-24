@@ -4,8 +4,6 @@ tap "nikitabobko/tap", trusted: true
 tap "tw93/tap", trusted: true
 # Run your GitHub Actions locally
 brew "act"
-# CLI for Amazon ECS to manage clusters and tasks for development
-brew "amazon-ecs-cli"
 # Engine for large-scale data processing
 brew "apache-spark"
 # Azure Storage data transfer utility
@@ -242,6 +240,8 @@ cask "zed"
 cask "zen"
 # Video communication and virtual meeting platform
 cask "zoom"
+uv "mypy"
+uv "ruff"
 npm "fast-cli"
 npm "neovim"
 npm "yarn"
