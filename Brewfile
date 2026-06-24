@@ -222,12 +222,8 @@ cask "tidal"
 cask "transmit"
 # OpenVPN client with AppleScript support
 cask "viscosity"
-# Web browser with built-in email client focusing on customization and control
-cask "vivaldi"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm@nightly"
-# Multiplayer code editor
-cask "zed"
 # Gecko based web browser
 cask "zen"
 # Video communication and virtual meeting platform
