@@ -180,8 +180,6 @@ cask "betterdisplay"
 cask "claude-code"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
-# OpenAI's Codex desktop app for managing coding agents
-cask "codex-app"
 # App to build and share containerised applications and microservices
 cask "docker-desktop"
 # Elasticsearch GUI
@@ -192,8 +190,6 @@ cask "elgato-stream-deck"
 cask "ferdium"
 # Web browser
 cask "firefox"
-# Terminal emulator that uses platform-native UI and GPU acceleration
-cask "ghostty"
 # Web browser
 cask "google-chrome"
 # Menu bar manager
@@ -212,8 +208,6 @@ cask "plexamp"
 cask "session-manager-plugin"
 # Team communication and collaboration software
 cask "slack"
-# Music streaming service
-cask "spotify"
 # Native GUI tool for relational databases
 cask "tableplus"
 # Music streaming service with high fidelity sound and hi-def video quality
@@ -224,8 +218,6 @@ cask "transmit"
 cask "viscosity"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm@nightly"
-# Gecko based web browser
-cask "zen"
 # Video communication and virtual meeting platform
 cask "zoom"
 uv "mypy"
