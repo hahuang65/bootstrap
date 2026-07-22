@@ -108,6 +108,8 @@ brew "yt-dlp"
 brew "mpv"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Create, run, and share large language models (LLMs)
+brew "ollama", restart_service: :changed
 # Development kit for the Java programming language
 brew "openjdk"
 # Command-line tool to generate, analyze, convert and manipulate colors
