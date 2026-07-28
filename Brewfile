@@ -78,6 +78,8 @@ brew "gnu-tar"
 brew "gnupg"
 # Command-line tool for generating regular expressions
 brew "grex"
+# A lean, beautiful terminal Spotify player
+brew "haseebkhalid1507/tap/myx"
 # Git hook and pre-commit lint manager
 brew "hk"
 # User-friendly cURL replacement (command-line HTTP client)
