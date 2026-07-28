@@ -1,6 +1,7 @@
 tap "felixkratz/formulae", trusted: true
 tap "mongodb/brew", trusted: true
 tap "nikitabobko/tap", trusted: true
+tap "simoarpe/ziggity"
 tap "tw93/tap", trusted: true
 # Run your GitHub Actions locally
 brew "act"
@@ -168,8 +169,6 @@ brew "felixkratz/formulae/borders"
 brew "felixkratz/formulae/sketchybar"
 # High-performance, schema-free, document-oriented database
 brew "mongodb/brew/mongodb-community"
-# Comprehensive macOS cleanup and application uninstall tool
-brew "tw93/tap/mole"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Command-line interface for 1Password
