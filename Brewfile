@@ -101,6 +101,8 @@ brew "lua-language-server"
 brew "mcat"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
+# Deep clean and optimize your Mac
+brew "mole"
 # Collection of tools that nobody wrote when UNIX was young
 brew "moreutils"
 # Feature-rich command-line audio/video downloader
