@@ -175,6 +175,8 @@ cask "1password"
 cask "1password-cli"
 # AeroSpace is an i3-like tiling window manager for macOS
 cask "nikitabobko/tap/aerospace"
+# 3D model slicing software for 3D printers, maintained by Bambu Lab
+cask "bambu-studio"
 # Display management tool
 cask "betterdisplay"
 # Terminal-based AI coding assistant
@@ -201,6 +203,8 @@ cask "keepingyouawake"
 cask "monitorcontrol"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# Programmable solid 3D CAD modeller
+cask "openscad"
 # Home media player
 cask "plex"
 # Music player focusing on visuals
