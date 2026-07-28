@@ -1,4 +1,5 @@
 tap "felixkratz/formulae", trusted: true
+tap "haseebkhalid1507/tap"
 tap "mongodb/brew", trusted: true
 tap "nikitabobko/tap", trusted: true
 tap "simoarpe/ziggity"
