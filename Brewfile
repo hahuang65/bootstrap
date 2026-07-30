@@ -213,6 +213,8 @@ cask "monitorcontrol"
 cask "obsidian"
 # Programmable solid 3D CAD modeller
 cask "openscad"
+# Whisper dictation/transcription app
+cask "opensuperwhisper"
 # Home media player
 cask "plex"
 # Music player focusing on visuals
