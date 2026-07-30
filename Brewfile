@@ -19,6 +19,8 @@ brew "bandwhich"
 brew "bash"
 # Programmable completion for Bash 4.2+
 brew "bash-completion@2"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
 # Language Server for Bash
 brew "bash-language-server"
 # C library of Git core methods that is re-entrant and linkable
@@ -79,6 +81,8 @@ brew "gnu-tar"
 brew "gnupg"
 # Command-line tool for generating regular expressions
 brew "grex"
+# Agent multiplexer that lives in your terminal
+brew "herdr"
 # Git hook and pre-commit lint manager
 brew "hk"
 # User-friendly cURL replacement (command-line HTTP client)
