@@ -37,6 +37,7 @@ mpv
 neovim
 netpala
 network-manager-applet
+niri
 obsidian-bin
 openscad
 pick
@@ -58,6 +59,8 @@ slack-desktop
 steam
 sway
 swaybg
+swayidle
+swaylock
 syncthing
 thunderbird
 tree-sitter-cli
@@ -70,5 +73,6 @@ wmenu
 wofi
 wowup-cf-bin
 xdg-user-dirs
+xwayland-satellite
 xytz-bin
 yt-dlp
