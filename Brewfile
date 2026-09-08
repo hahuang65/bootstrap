@@ -242,3 +242,5 @@ npm "neovim"
 npm "yarn"
 # Tiling window manager
 cask "omniwm"
+# Simple hotkey-daemon for macOS.
+brew "asmvik/formulae/skhd"
