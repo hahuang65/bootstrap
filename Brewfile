@@ -202,8 +202,6 @@ cask "keepingyouawake"
 cask "monitorcontrol"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
-# Programmable solid 3D CAD modeller
-cask "openscad"
 # Home media player
 cask "plex"
 # Music player focusing on visuals
