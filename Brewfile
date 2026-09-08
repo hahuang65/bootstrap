@@ -1,9 +1,6 @@
-tap "agavra/tap"
 tap "felixkratz/formulae", trusted: true
-tap "haseebkhalid1507/tap"
 tap "mongodb/brew", trusted: true
 tap "nikitabobko/tap", trusted: true
-tap "simoarpe/ziggity"
 tap "tw93/tap", trusted: true
 # Run your GitHub Actions locally
 brew "act"
