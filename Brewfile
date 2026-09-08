@@ -240,3 +240,5 @@ uv "ruff"
 npm "fast-cli"
 npm "neovim"
 npm "yarn"
+# Tiling window manager
+cask "omniwm"
