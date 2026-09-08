@@ -1,6 +1,4 @@
-tap "felixkratz/formulae", trusted: true
 tap "mongodb/brew", trusted: true
-tap "nikitabobko/tap", trusted: true
 tap "tw93/tap", trusted: true
 # Run your GitHub Actions locally
 brew "act"
@@ -168,18 +166,12 @@ brew "wget"
 brew "witr"
 # Copy terminal output to clipboard
 brew "yank"
-# A window border system for macOS
-brew "felixkratz/formulae/borders"
-# Custom macOS statusbar with shell plugin, interaction and graph support
-brew "felixkratz/formulae/sketchybar"
 # High-performance, schema-free, document-oriented database
 brew "mongodb/brew/mongodb-community"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Command-line interface for 1Password
 cask "1password-cli"
-# AeroSpace is an i3-like tiling window manager for macOS
-cask "nikitabobko/tap/aerospace"
 # 3D model slicing software for 3D printers, maintained by Bambu Lab
 cask "bambu-studio"
 # Display management tool
