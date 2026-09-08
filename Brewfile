@@ -244,3 +244,5 @@ npm "yarn"
 cask "omniwm"
 # Simple hotkey-daemon for macOS.
 brew "asmvik/formulae/skhd"
+# API documentation browser and code snippet manager
+cask "dash"
