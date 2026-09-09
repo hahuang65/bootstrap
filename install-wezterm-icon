@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+readonly WEZTERM_ICON_URL="https://raw.githubusercontent.com/mikker/wezterm-icon/e3dc6a9a45f1a442c8ad1db88cd84999d4ecc777/wezterm.icns"
+readonly WEZTERM_ICON_SHA256="b2f7eec579519855bef67e342c19b72728332dba7dd02e0b02709002be17143c"
+readonly WEZTERM_APPLICATION_ICON="/Applications/WezTerm.app/Contents/Resources/terminal.icns"
+readonly MACOS_ICON_CACHE_ROOT="/var/folders"
+
+function install_wezterm_icon {
+  local icon_url="$1"
+  local expected_sha256="$2"
+  local application_icon="$3"
+  local icon_cache_root="$4"
+  local downloaded_icon
+  local actual_sha256
+
+  if [[ ! "$expected_sha256" =~ ^[[:xdigit:]]{64}$ ]]; then
+    echo "The WezTerm icon checksum is invalid." >&2
+    return 1
+  fi
+  if [[ "$application_icon" != /* || "$icon_cache_root" != /* || "$icon_cache_root" == "/" ]]; then
+    echo "The WezTerm icon paths must be safe absolute paths." >&2
+    return 1
+  fi
+
+  downloaded_icon="$(mktemp "${TMPDIR:-/tmp}/wezterm-icon.XXXXXX")"
+  if ! curl --fail --location --silent --show-error --output "$downloaded_icon" "$icon_url"; then
+    rm -f "$downloaded_icon"
+    return 1
+  fi
+
+  actual_sha256="$(shasum -a 256 "$downloaded_icon" | awk '{print $1}')"
+  if [[ "$actual_sha256" != "$expected_sha256" ]]; then
+    echo "The downloaded WezTerm icon does not match its pinned checksum." >&2
+    rm -f "$downloaded_icon"
+    return 1
+  fi
+
+  if ! cp "$downloaded_icon" "$application_icon"; then
+    rm -f "$downloaded_icon"
+    return 1
+  fi
+  rm -f "$downloaded_icon"
+  rm -f "$icon_cache_root"/*/*/*/com.apple.dock.iconcache
+  rm -rf "$icon_cache_root"/*/*/*/com.apple.iconservices*
+  killall Dock
+}
+
+if [[ "$0" == "${BASH_SOURCE[0]}" ]]; then
+  install_wezterm_icon \
+    "$WEZTERM_ICON_URL" \
+    "$WEZTERM_ICON_SHA256" \
+    "$WEZTERM_APPLICATION_ICON" \
+    "$MACOS_ICON_CACHE_ROOT"
+fi

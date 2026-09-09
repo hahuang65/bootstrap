@@ -219,7 +219,7 @@ cask "transmit"
 # OpenVPN client with AppleScript support
 cask "viscosity"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
-cask "wezterm@nightly"
+cask "wezterm@nightly", postinstall: '"$HOME/.dotfiles/bootstrap/install-wezterm-icon"'
 # Video communication and virtual meeting platform
 cask "zoom"
 uv "mypy"

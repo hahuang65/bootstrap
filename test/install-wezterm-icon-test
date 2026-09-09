@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+readonly REPOSITORY_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+readonly INSTALLER="$REPOSITORY_ROOT/install-wezterm-icon"
+
+# shellcheck source=../install-wezterm-icon
+source "$INSTALLER"
+
+function create_fake_killall {
+  local executable_path="$1"
+
+  cat >"$executable_path" <<'EOF'
+#!/usr/bin/env bash
+printf '%s\n' "$*" >"$KILLALL_LOG"
+EOF
+  chmod +x "$executable_path"
+}
+
+function test_installs_verified_icon_and_refreshes_dock_cache (
+  local test_root
+  test_root="$(mktemp -d)"
+  trap 'rm -rf "$test_root"' EXIT
+
+  local source_icon="$test_root/source.icns"
+  local application_icon="$test_root/Applications/WezTerm.app/Contents/Resources/terminal.icns"
+  local cache_root="$test_root/cache"
+  local dock_cache="$cache_root/a/b/c/com.apple.dock.iconcache"
+  local iconservices_cache="$cache_root/a/b/c/com.apple.iconservices.store"
+  local expected_sha256
+
+  mkdir -p "$(dirname "$application_icon")" "$iconservices_cache" "$test_root/bin"
+  printf 'verified icon' >"$source_icon"
+  printf 'stale cache' >"$dock_cache"
+  expected_sha256="$(shasum -a 256 "$source_icon" | awk '{print $1}')"
+  create_fake_killall "$test_root/bin/killall"
+  export PATH="$test_root/bin:$PATH"
+  export KILLALL_LOG="$test_root/killall.log"
+
+  install_wezterm_icon "file://$source_icon" "$expected_sha256" "$application_icon" "$cache_root"
+
+  cmp --silent "$source_icon" "$application_icon"
+  [[ ! -e "$dock_cache" ]]
+  [[ ! -e "$iconservices_cache" ]]
+  grep --fixed-strings --line-regexp --quiet 'Dock' "$KILLALL_LOG"
+)
+
+function test_rejects_icon_with_unexpected_checksum (
+  local test_root
+  test_root="$(mktemp -d)"
+  trap 'rm -rf "$test_root"' EXIT
+
+  local source_icon="$test_root/source.icns"
+  local application_icon="$test_root/terminal.icns"
+  local cache_root="$test_root/cache"
+
+  mkdir -p "$cache_root"
+  printf 'untrusted icon' >"$source_icon"
+  printf 'original icon' >"$application_icon"
+
+  if install_wezterm_icon \
+    "file://$source_icon" \
+    "0000000000000000000000000000000000000000000000000000000000000000" \
+    "$application_icon" \
+    "$cache_root" \
+    2>"$test_root/error.log"; then
+    echo "Expected checksum verification to fail." >&2
+    return 1
+  fi
+
+  grep --fixed-strings --line-regexp --quiet 'original icon' "$application_icon"
+  grep --fixed-strings --quiet 'does not match its pinned checksum' "$test_root/error.log"
+)
+
+test_installs_verified_icon_and_refreshes_dock_cache
+test_rejects_icon_with_unexpected_checksum
