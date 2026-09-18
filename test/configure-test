@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+readonly REPOSITORY_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+readonly TEST_ROOT="$(mktemp -d)"
+trap 'rm -rf "$TEST_ROOT"' EXIT
+
+export HOME="$TEST_ROOT/home"
+export INSTALL_LOG="$TEST_ROOT/install.log"
+mkdir -p "$HOME/.dotfiles"
+cat >"$HOME/.dotfiles/install.sh" <<'INSTALLER'
+#!/usr/bin/env bash
+printf 'installed\n' >"$INSTALL_LOG"
+INSTALLER
+chmod +x "$HOME/.dotfiles/install.sh"
+
+# shellcheck source=../configure
+source "$REPOSITORY_ROOT/configure"
+install_dotfiles
+
+if [[ $(<"$INSTALL_LOG") != installed ]]; then
+  printf 'Expected existing dotfiles to apply the current installation policy.\n' >&2
+  exit 1
+fi
+
+printf 'Bootstrap configure tests passed.\n'

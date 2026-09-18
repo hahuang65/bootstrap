@@ -36,16 +36,13 @@ function ensure_paru {
 }
 
 function install_dotfiles {
-  if [ -d "$HOME/.dotfiles" ]; then
-    echo "$HOME/.dotfiles already exists. Skipping installation."
-  else
-    git clone "$DOTFILES_REPO" "$HOME/.dotfiles" &&
-      pushd "$HOME/.dotfiles" &&
-      git submodule init &&
-      git submodule update &&
-      ./install.sh
-    popd
+  if [ ! -d "$HOME/.dotfiles" ]; then
+    git clone "$DOTFILES_REPO" "$HOME/.dotfiles"
   fi
+
+  pushd "$HOME/.dotfiles" >/dev/null
+  ./install.sh
+  popd >/dev/null
 }
 
 function sync_paru {

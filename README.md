@@ -18,6 +18,17 @@ This is a script that is meant to be run on a new computer. It will attempt to i
 source ~/.dotfiles/bootstrap/configure && sync
 ```
 
+### Reconcile dotfile submodules
+
+The dotfiles superproject records each submodule's supported operating systems with repeated `os = Darwin` and `os = Linux` entries in `.gitmodules`.
+Run the policy directly to initialize supported submodules and safely remove unsupported checkouts:
+
+```sh
+~/.dotfiles/configure-submodules.sh
+```
+
+The command stops if an unsupported submodule contains local work or if a tracked submodule has no operating-system policy.
+
 ### Package management
 
 - **macOS**: Edit `Brewfile`, then `sync`
