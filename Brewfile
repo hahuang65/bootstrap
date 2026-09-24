@@ -229,3 +229,5 @@ cask "omniwm"
 brew "asmvik/formulae/skhd"
 # API documentation browser and code snippet manager
 cask "dash"
+# Terminal-based AI coding assistant
+cask "claude-code@latest"
