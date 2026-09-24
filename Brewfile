@@ -1,3 +1,4 @@
+tap "asmvik/formulae", trusted: true
 tap "mongodb/brew", trusted: true
 tap "tw93/tap", trusted: true
 # Run your GitHub Actions locally
