@@ -174,8 +174,6 @@ cask "1password-cli"
 cask "bambu-studio"
 # Display management tool
 cask "betterdisplay"
-# Terminal-based AI coding assistant
-cask "claude-code"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
 # App to build and share containerised applications and microservices
