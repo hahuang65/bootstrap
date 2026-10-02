@@ -17,6 +17,7 @@ ferdium
 firefox
 flyctl-bin
 foot
+fuse2
 fuzzel
 fzf
 git
@@ -40,7 +41,7 @@ network-manager-applet
 obsidian-bin
 openscad
 pick
-pi-coding-agent
+pi-coding-agent-bin
 plexamp-appimage
 plex-desktop
 podman
@@ -69,7 +70,6 @@ wget
 wiremix
 wmenu
 wofi
-wowup-cf-beta-bin
 wtype
 xdg-user-dirs
 xwayland-satellite
