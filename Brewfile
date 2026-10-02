@@ -232,3 +232,5 @@ brew "asmvik/formulae/skhd"
 cask "dash"
 # Terminal-based AI coding assistant
 cask "claude-code@latest"
+# Terminal UI OS (Terminal Multiplexer)
+brew "tuios"
