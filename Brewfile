@@ -189,8 +189,6 @@ cask "ferdium"
 cask "firefox"
 # Web browser
 cask "google-chrome"
-# Speech to text application
-cask "handy"
 # Menu bar manager
 cask "jordanbaird-ice"
 # Tool to prevent the system from going into sleep mode
