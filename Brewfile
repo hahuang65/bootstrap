@@ -7,8 +7,6 @@ brew "act"
 brew "apache-spark"
 # Azure Storage data transfer utility
 brew "azcopy"
-# Microsoft Azure CLI 2.0
-brew "azure-cli"
 # Terminal bandwidth utilization tool
 brew "bandwhich"
 # Bourne-Again SHell, a UNIX command interpreter
