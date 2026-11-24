@@ -230,3 +230,5 @@ cask "dash"
 cask "claude-code@latest"
 # Web browser
 cask "ladybird"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
