@@ -228,3 +228,5 @@ brew "asmvik/formulae/skhd"
 cask "dash"
 # Terminal-based AI coding assistant
 cask "claude-code@latest"
+# Web browser
+cask "ladybird"
